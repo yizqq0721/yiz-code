@@ -1,25 +1,24 @@
 package com.yizqq.yizcode.common;
 
 
+
 import lombok.Data;
 
+/**
+ * 请求封装类
+ */
 @Data
 public class PageRequest {
 
     /**
-     * 当前页
+     * 当前页号
      */
-    private long current = 1;
+    private int pageNum = 1;
 
     /**
      * 页面大小
      */
-    private long pageSize = 10;
-
-    /**
-     * 搜索字段
-     */
-    private String searchText;
+    private int pageSize = 10;
 
     /**
      * 排序字段

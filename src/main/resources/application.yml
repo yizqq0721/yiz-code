@@ -1,6 +1,11 @@
 spring:
   application:
     name: yiz-code-backend
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/yiz_code
+    username: root
+    password: "0721"
 server:
   port: 8080
   servlet:

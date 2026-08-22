@@ -3,6 +3,8 @@ package com.yizqq.yizcode.core;
 import com.yizqq.yizcode.ai.AiCodeGeneratorService;
 import com.yizqq.yizcode.ai.model.HtmlCodeResult;
 import com.yizqq.yizcode.ai.model.MultiFileCodeResult;
+import com.yizqq.yizcode.core.parser.CodeParserExecutor;
+import com.yizqq.yizcode.core.save.CodeFileSaverExecutor;
 import com.yizqq.yizcode.exception.BusinessException;
 import com.yizqq.yizcode.exception.ErrorCode;
 import com.yizqq.yizcode.model.enums.CodeGenTypeEnum;
@@ -32,8 +34,14 @@ public class AiCodeGeneratorFacade {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "生成类型不能为空");
         }
         return switch (codeGenTypeEnum) {
-            case HTML -> generateAndSaveHtmlCode(userPrompt);
-            case MULTI_FILE -> generateAndSaveMultiFileCode(userPrompt);
+            case HTML -> {
+                HtmlCodeResult htmlCodeResult = aiCodeGeneratorService.generateHTMLCode(userPrompt);
+                yield  CodeFileSaver.saveHtmlCodeResult(htmlCodeResult);
+            }
+            case MULTI_FILE -> {
+                MultiFileCodeResult multiFileCodeResult = aiCodeGeneratorService.generateMultiFileCode(userPrompt);
+                yield  CodeFileSaver.saveMultiFileCodeResult(multiFileCodeResult);
+            }
             default -> {
                 String ErrMessage = "不支持生成的类型"+codeGenTypeEnum.getValue();
                 throw new BusinessException(ErrorCode.SYSTEM_ERROR, ErrMessage);
@@ -53,8 +61,14 @@ public class AiCodeGeneratorFacade {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "生成类型不能为空");
         }
         return switch (codeGenTypeEnum) {
-            case HTML -> generateAndSaveHtmlCodeStream(userPrompt);
-            case MULTI_FILE -> generateAndSaveMultiFileCodeStream(userPrompt);
+            case HTML -> {
+                Flux<String> codeStream = aiCodeGeneratorService.generateHtmlCodeStream(userPrompt);
+                yield  processCodeStream(codeStream, CodeGenTypeEnum.HTML, 1L);
+            }
+            case MULTI_FILE -> {
+                Flux<String> codeStream = aiCodeGeneratorService.generateMultiFileCodeStream(userPrompt);
+                yield processCodeStream(codeStream, CodeGenTypeEnum.MULTI_FILE, 1L);
+            }
             default -> {
                 String ErrMessage = "不支持生成的类型"+codeGenTypeEnum.getValue();
                 throw new BusinessException(ErrorCode.SYSTEM_ERROR, ErrMessage);
@@ -63,63 +77,29 @@ public class AiCodeGeneratorFacade {
     }
 
     /**
-     * 生成多文件代码并保存
+     * 通用流式代码处理方法
      *
-     * @param userPrompt 用户提示词
-     * @return 保存的目录
+     * @param codeStream  代码流
+     * @param codeGenType 代码生成类型
+     * @param appId       应用 ID
+     * @return 流式响应
      */
-    private File generateAndSaveMultiFileCode(String userPrompt) {
-        MultiFileCodeResult multiFileCodeResult = aiCodeGeneratorService.generateMultiFileCode(userPrompt);
-        return CodeFileSaver.saveMultiFileCodeResult(multiFileCodeResult);
-    }
-
-    /**
-     * 生成HTML代码并保存
-     *
-     * @param userPrompt 用户提示词
-     * @return 保存的目录
-     */
-    private File generateAndSaveHtmlCode(String userPrompt) {
-        HtmlCodeResult htmlCodeResult = aiCodeGeneratorService.generateHTMLCode(userPrompt);
-        return CodeFileSaver.saveHtmlCodeResult(htmlCodeResult);
-    }
-
-    /**
-     * 生成多文件代码并保存（流式）
-     *
-     * @param userPrompt 用户提示词
-     * @return 保存的目录
-     */
-    private Flux<String> generateAndSaveMultiFileCodeStream(String userPrompt) {
-        Flux<String> stringFlux = aiCodeGeneratorService.generateMultiFileCodeStream(userPrompt);
-        StringBuilder CodeBuilder = new StringBuilder();
-        return stringFlux.doOnNext(check ->{
-                CodeBuilder.append(check);
-                }).doOnComplete(()->{
-                    String completeMultiFileCode = CodeBuilder.toString();
-                    MultiFileCodeResult multiFileCodeResult = CodeParser.parseMultiFileCode(completeMultiFileCode);
-                    File saveDir = CodeFileSaver.saveMultiFileCodeResult(multiFileCodeResult);
-                    log.info("代码保存目录: {}", saveDir.getAbsolutePath());
-                });
-    }
-
-    /**
-     * 生成HTML代码并保存（流式）
-     *
-     * @param userPrompt 用户提示词
-     * @return 保存的目录
-     */
-
-    private Flux<String> generateAndSaveHtmlCodeStream(String userPrompt) {
-        Flux<String> stringFlux = aiCodeGeneratorService.generateHtmlCodeStream(userPrompt);
-        StringBuilder CodeBuilder = new StringBuilder();
-        return stringFlux.doOnNext(check ->{
-            CodeBuilder.append(check);
-        }).doOnComplete(()->{
-            String completeHtmlCode = CodeBuilder.toString();
-            HtmlCodeResult htmlCodeResult = CodeParser.parseHtmlCode(completeHtmlCode);
-            File saveDir = CodeFileSaver.saveHtmlCodeResult(htmlCodeResult);
-            log.info("代码保存目录: {}", saveDir.getAbsolutePath());
+    private Flux<String> processCodeStream(Flux<String> codeStream, CodeGenTypeEnum codeGenType, Long appId) {
+        // 字符串拼接器，用于当流式返回所有的代码之后，再保存代码
+        StringBuilder codeBuilder = new StringBuilder();
+        // 实时收集代码片段
+        return codeStream.doOnNext(codeBuilder::append).doOnComplete(() -> {
+            // 流式返回完成后，保存代码
+            try {
+                String completeCode = codeBuilder.toString();
+                // 使用执行器解析代码
+                Object parsedResult = CodeParserExecutor.executeParser(completeCode, codeGenType);
+                // 使用执行器保存代码
+                File saveDir = CodeFileSaverExecutor.executeSaver(parsedResult, codeGenType, appId);
+                log.info("保存成功，目录为：{}", saveDir.getAbsolutePath());
+            } catch (Exception e) {
+                log.error("保存失败: {}", e.getMessage());
+            }
         });
     }
 

@@ -27,20 +27,21 @@ public class AiCodeGeneratorFacade {
      *
       * @param userPrompt      用户提示词
      * @param codeGenTypeEnum 生成类型
+     * @param appID 应用ID
      * @return 保存的目录
      */
-    public File generateAndSaveCode(String userPrompt , CodeGenTypeEnum codeGenTypeEnum) {
+    public File generateAndSaveCode(String userPrompt , CodeGenTypeEnum codeGenTypeEnum , Long appID) {
         if (codeGenTypeEnum == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "生成类型不能为空");
         }
         return switch (codeGenTypeEnum) {
             case HTML -> {
                 HtmlCodeResult htmlCodeResult = aiCodeGeneratorService.generateHTMLCode(userPrompt);
-                yield  CodeFileSaver.saveHtmlCodeResult(htmlCodeResult);
+                yield  CodeFileSaverExecutor.executeSaver(htmlCodeResult,CodeGenTypeEnum.HTML,appID);
             }
             case MULTI_FILE -> {
                 MultiFileCodeResult multiFileCodeResult = aiCodeGeneratorService.generateMultiFileCode(userPrompt);
-                yield  CodeFileSaver.saveMultiFileCodeResult(multiFileCodeResult);
+                yield  CodeFileSaverExecutor.executeSaver(multiFileCodeResult,CodeGenTypeEnum.MULTI_FILE,appID);
             }
             default -> {
                 String ErrMessage = "不支持生成的类型"+codeGenTypeEnum.getValue();
@@ -54,20 +55,21 @@ public class AiCodeGeneratorFacade {
      *
      * @param userPrompt      用户提示词
      * @param codeGenTypeEnum 生成类型
+     * @param appID 应用ID
      * @return 保存的目录
      */
-    public Flux<String> generateAndSaveCodeStream(String userPrompt , CodeGenTypeEnum codeGenTypeEnum) {
+    public Flux<String> generateAndSaveCodeStream(String userPrompt , CodeGenTypeEnum codeGenTypeEnum , Long appID) {
         if (codeGenTypeEnum == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "生成类型不能为空");
         }
         return switch (codeGenTypeEnum) {
             case HTML -> {
                 Flux<String> codeStream = aiCodeGeneratorService.generateHtmlCodeStream(userPrompt);
-                yield  processCodeStream(codeStream, CodeGenTypeEnum.HTML, 1L);
+                yield  processCodeStream(codeStream, CodeGenTypeEnum.HTML, appID);
             }
             case MULTI_FILE -> {
                 Flux<String> codeStream = aiCodeGeneratorService.generateMultiFileCodeStream(userPrompt);
-                yield processCodeStream(codeStream, CodeGenTypeEnum.MULTI_FILE, 1L);
+                yield processCodeStream(codeStream, CodeGenTypeEnum.MULTI_FILE, appID);
             }
             default -> {
                 String ErrMessage = "不支持生成的类型"+codeGenTypeEnum.getValue();

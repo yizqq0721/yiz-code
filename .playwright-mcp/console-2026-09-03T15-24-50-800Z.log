@@ -1,0 +1,4 @@
+[    3344ms] [WARNING] [Vue Router warn]: uncaught error during route navigation: @ http://localhost:5174/node_modules/.vite/deps/vue-router.js?v=c5004c99:203
+[    3344ms] [ERROR] AxiosError @ http://localhost:5174/node_modules/.vite/deps/vue-router.js?v=c5004c99:2772
+[    3345ms] [WARNING] [Vue Router warn]: Unexpected error when starting the router: AxiosError @ http://localhost:5174/node_modules/.vite/deps/vue-router.js?v=c5004c99:203
+[    3345ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/api/user/get/login:0

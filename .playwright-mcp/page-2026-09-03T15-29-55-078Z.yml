@@ -1,0 +1,58 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e3]:
+    - generic [ref=f3e5]:
+      - link [ref=f3e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f3e8]:
+          - img "Logo" [ref=f3e9]
+          - heading "鱼皮应用生成" [level=1] [ref=f3e10]
+      - menu [ref=f3e12]:
+        - menuitem "home 主页" [ref=f3e13] [cursor=pointer]:
+          - img "home" [ref=f3e14]
+          - generic [ref=f3e17]: 主页
+        - menuitem [ref=f3e18] [cursor=pointer]:
+          - link "编程导航" [ref=f3e20]:
+            - /url: https://www.codefather.cn
+      - link "登 录" [ref=f3e24] [cursor=pointer]:
+        - /url: /user/login
+    - main [ref=f3e26]:
+      - generic [ref=f3e28]:
+        - generic [ref=f3e29]:
+          - heading "AI 应用生成平台" [level=1] [ref=f3e30]
+          - paragraph [ref=f3e31]: 一句话轻松创建网站应用
+        - generic [ref=f3e32]:
+          - textbox "帮我创建个人博客网站" [ref=f3e33]
+          - button "↑" [ref=f3e35] [cursor=pointer]
+        - generic [ref=f3e37]:
+          - button "个人博客网站" [ref=f3e38] [cursor=pointer]
+          - button "企业官网" [ref=f3e40] [cursor=pointer]
+          - button "在线商城" [ref=f3e42] [cursor=pointer]
+          - button "作品展示网站" [ref=f3e44] [cursor=pointer]
+        - generic [ref=f3e46]:
+          - heading "我的作品" [level=2] [ref=f3e47]
+          - list [ref=f3e49]:
+            - listitem [ref=f3e50]: 共 0 个应用
+            - listitem "Previous Page" [ref=f3e51]:
+              - button [disabled] [ref=f3e52]:
+                - img "left" [ref=f3e53]
+            - listitem "1" [ref=f3e56] [cursor=pointer]
+            - listitem "Next Page" [ref=f3e58]:
+              - button [disabled] [ref=f3e59]:
+                - img "right" [ref=f3e60]
+        - generic [ref=f3e63]:
+          - heading "精选案例" [level=2] [ref=f3e64]
+          - list [ref=f3e66]:
+            - listitem [ref=f3e67]: 共 0 个案例
+            - listitem "Previous Page" [ref=f3e68]:
+              - button [disabled] [ref=f3e69]:
+                - img "left" [ref=f3e70]
+            - listitem "1" [ref=f3e73] [cursor=pointer]
+            - listitem "Next Page" [ref=f3e75]:
+              - button [disabled] [ref=f3e76]:
+                - img "right" [ref=f3e77]
+    - paragraph [ref=f3e82]:
+      - link "编程导航原创项目 by 程序员鱼皮" [ref=f3e83] [cursor=pointer]:
+        - /url: https://www.codefather.cn
+  - generic [ref=f3e84]:
+    - generic "Toggle devtools panel" [ref=f3e85] [cursor=pointer]
+    - generic "Toggle Component Inspector" [ref=f3e91] [cursor=pointer]

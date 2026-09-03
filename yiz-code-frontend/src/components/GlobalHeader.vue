@@ -5,14 +5,19 @@
       <a-col flex="200px">
         <RouterLink to="/">
           <div class="header-left">
-            <!--  <img class="logo" src="@/assets/logo.png" alt="Logo" /> -->
-            <h1 class="site-title">应用生成</h1>
+            <img class="logo" src="@/assets/logo.png" alt="Logo" />
+            <h1 class="site-title">鱼皮应用生成</h1>
           </div>
         </RouterLink>
       </a-col>
       <!-- 中间：导航菜单 -->
       <a-col flex="auto">
-        <a-menu v-model:selectedKeys="selectedKeys" mode="horizontal" :items="menuItems" @click="handleMenuClick" />
+        <a-menu
+          v-model:selectedKeys="selectedKeys"
+          mode="horizontal"
+          :items="menuItems"
+          @click="handleMenuClick"
+        />
       </a-col>
       <!-- 右侧：用户操作区域 -->
       <a-col>
@@ -46,8 +51,8 @@
 import { computed, h, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { type MenuProps, message } from 'ant-design-vue'
-import { useLoginUserStore } from '@/stores/LoginUser.ts'
-import { logout } from '@/api/userController.ts'
+import { useLoginUserStore } from '@/stores/LoginUser'
+import { userLogout } from '@/api/userController.ts'
 import { LogoutOutlined, HomeOutlined } from '@ant-design/icons-vue'
 
 const loginUserStore = useLoginUserStore()
@@ -113,7 +118,7 @@ const handleMenuClick: MenuProps['onClick'] = (e) => {
 
 // 退出登录
 const doLogout = async () => {
-  const res = await logout()
+  const res = await userLogout()
   if (res.data.code === 0) {
     loginUserStore.setLoginUser({
       userName: '未登录',

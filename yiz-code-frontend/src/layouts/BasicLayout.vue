@@ -1,34 +1,30 @@
-<script setup lang="ts">
-import { RouterView } from 'vue-router'
-import GlobalHeader from '@/components/GlobalHeader.vue'
-import GlobalFooter from '@/components/GlobalFooter.vue'
-import type { MenuItem } from '@/components/GlobalHeader.vue'
-
-defineOptions({ name: 'BasicLayout' })
-
-const menuItems: MenuItem[] = [
-  { key: 'home', label: '首页', path: '/' },
-  { key: 'about', label: '关于', path: '/about' },
-]
-</script>
-
 <template>
   <a-layout class="basic-layout">
-    <GlobalHeader :menu-items="menuItems" title="YiZ Code" />
-    <a-layout-content class="layout-content">
-      <RouterView />
+    <!-- 顶部导航栏 -->
+    <GlobalHeader />
+    <!-- 主要内容区域 -->
+    <a-layout-content class="main-content">
+      <router-view />
     </a-layout-content>
+    <!-- 底部版权信息 -->
     <GlobalFooter />
   </a-layout>
 </template>
 
+<script setup lang="ts">
+import GlobalHeader from '@/components/GlobalHeader.vue'
+import GlobalFooter from '@/components/GlobalFooter.vue'
+</script>
+
 <style scoped>
 .basic-layout {
-  min-height: 100vh;
+  background: none;
 }
 
-.layout-content {
-  padding: 24px;
-  background: var(--color-background, #fff);
+.main-content {
+  width: 100%;
+  padding: 0;
+  background: none;
+  margin: 0;
 }
 </style>

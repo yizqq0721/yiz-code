@@ -1,0 +1,40 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - link [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e8]:
+          - img "Logo" [ref=e9]
+          - heading "鱼皮应用生成" [level=1] [ref=e10]
+      - menu [ref=e12]:
+        - menuitem "home 主页" [ref=e13] [cursor=pointer]:
+          - img "home" [ref=e14]
+          - generic [ref=e17]: 主页
+        - menuitem [ref=e18] [cursor=pointer]:
+          - link "编程导航" [ref=e20]:
+            - /url: https://www.codefather.cn
+      - link "登 录" [ref=e24] [cursor=pointer]:
+        - /url: /user/login
+    - main [ref=e26]:
+      - generic [ref=e27]:
+        - heading "鱼皮 AI 应用生成 - 用户登录" [level=2] [ref=e28]
+        - generic [ref=e29]: 不写一行代码，生成完整应用
+        - generic [ref=e30]:
+          - textbox "请输入账号" [ref=e36]
+          - generic [ref=e42]:
+            - textbox "请输入密码" [ref=e43]
+            - img "eye-invisible" [ref=e45] [cursor=pointer]
+          - generic [ref=e49]:
+            - text: 没有账号
+            - link "去注册" [ref=e50] [cursor=pointer]:
+              - /url: /user/register
+          - button "登 录" [ref=e56] [cursor=pointer]
+    - paragraph [ref=e60]:
+      - link "编程导航原创项目 by 程序员鱼皮" [ref=e61] [cursor=pointer]:
+        - /url: https://www.codefather.cn
+  - generic [ref=e62]:
+    - generic "Toggle devtools panel" [ref=e63] [cursor=pointer]
+    - generic "Toggle Component Inspector" [ref=e69] [cursor=pointer]
+  - generic [ref=e75]:
+    - img "close-circle" [ref=e76]
+    - text: 没有权限

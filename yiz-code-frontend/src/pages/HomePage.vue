@@ -6,6 +6,8 @@ import { useLoginUserStore } from '@/stores/LoginUser'
 import { addApp, listMyAppVoByPage, listGoodAppVoByPage } from '@/api/appController'
 import { getDeployUrl } from '@/config/env'
 import AppCard from '@/components/AppCard.vue'
+// 大整数安全解析：用于修复后端雪花 ID（19 位 Long）在 JSON 解析时精度丢失的问题
+import { bigIntSafeTransformResponse } from '@/utils/jsonBigInt'
 
 const router = useRouter()
 const loginUserStore = useLoginUserStore()
@@ -52,13 +54,24 @@ const createApp = async () => {
 
   creating.value = true
   try {
-    const res = await addApp({
-      initPrompt: userPrompt.value.trim(),
-    })
+    // 【修复雪花 ID 精度丢失】
+    // 后端返回的新应用 ID 是 19 位 Long，超出 JS Number 安全整数范围（2^53 - 1），
+    // 用默认 JSON 解析会被四舍五入（如 453799400838299648 -> 453799400838299650），
+    // 导致跳转到错误的应用 ID 后接口 404、被弹回首页（表现为"创建成功"后又回到首页）。
+    // 通过 transformResponse 用 json-bigint 解析该请求的响应，保证拿到精确的 ID 字符串。
+    const res = await addApp(
+      {
+        initPrompt: userPrompt.value.trim(),
+      },
+      {
+        transformResponse: [bigIntSafeTransformResponse],
+      },
+    )
 
     if (res.data.code === 0 && res.data.data) {
       message.success('应用创建成功')
-      // 跳转到对话页面，确保ID是字符串类型
+      // 跳转到对话页面；res.data.data 经 json-bigint 解析后是精确的 ID 字符串，
+      // 这里统一转成字符串，确保路由跳转携带正确的应用 ID
       const appId = String(res.data.data)
       await router.push(`/app/chat/${appId}`)
     } else {
@@ -79,12 +92,22 @@ const loadMyApps = async () => {
   }
 
   try {
-    const res = await listMyAppVoByPage({
-      pageNum: myAppsPage.current,
-      pageSize: myAppsPage.pageSize,
-      sortField: 'createTime',
-      sortOrder: 'desc',
-    })
+    // 【修复雪花 ID 精度丢失】
+    // 应用 ID 是 19 位 Long，超出 JS Number 安全整数范围（2^53 - 1），
+    // 默认 JSON 解析会把 ID 四舍五入，导致"查看对话"用错误 ID 跳转、
+    // 接口 404 后被弹回首页（表现为点击无反应）。
+    // 通过 transformResponse 用 json-bigint 解析响应，列表项中的 id 保持为精确字符串。
+    const res = await listMyAppVoByPage(
+      {
+        pageNum: myAppsPage.current,
+        pageSize: myAppsPage.pageSize,
+        sortField: 'createTime',
+        sortOrder: 'desc',
+      },
+      {
+        transformResponse: [bigIntSafeTransformResponse],
+      },
+    )
 
     if (res.data.code === 0 && res.data.data) {
       myApps.value = res.data.data.records || []
@@ -98,12 +121,20 @@ const loadMyApps = async () => {
 // 加载精选应用
 const loadFeaturedApps = async () => {
   try {
-    const res = await listGoodAppVoByPage({
-      pageNum: featuredAppsPage.current,
-      pageSize: featuredAppsPage.pageSize,
-      sortField: 'createTime',
-      sortOrder: 'desc',
-    })
+    // 【修复雪花 ID 精度丢失】
+    // 与"我的应用"列表同理，精选应用列表中的 id 也需要用 json-bigint 解析，
+    // 保证"查看对话"跳转时携带精确的应用 ID。
+    const res = await listGoodAppVoByPage(
+      {
+        pageNum: featuredAppsPage.current,
+        pageSize: featuredAppsPage.pageSize,
+        sortField: 'createTime',
+        sortOrder: 'desc',
+      },
+      {
+        transformResponse: [bigIntSafeTransformResponse],
+      },
+    )
 
     if (res.data.code === 0 && res.data.data) {
       featuredApps.value = res.data.data.records || []
@@ -115,6 +146,7 @@ const loadFeaturedApps = async () => {
 }
 
 // 查看对话
+// appId 经 json-bigint 解析后是精确的 ID 字符串（雪花 ID 不会精度丢失）
 const viewChat = (appId: string | number | undefined) => {
   if (appId) {
     router.push(`/app/chat/${appId}?view=1`)

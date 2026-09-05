@@ -79,6 +79,12 @@ declare namespace API {
     message?: string
   }
 
+  type BaseResponsePageChatHistory = {
+    code?: number
+    data?: PageChatHistory
+    message?: string
+  }
+
   type BaseResponsePageUserVO = {
     code?: number
     data?: PageUserVO
@@ -103,11 +109,6 @@ declare namespace API {
     message?: string
   }
 
-  type chatToGenCodeParams = {
-    appId: number
-    prompt: string
-  }
-
   type ChatHistory = {
     id?: number
     message?: string
@@ -117,6 +118,11 @@ declare namespace API {
     createTime?: string
     updateTime?: string
     isDelete?: number
+  }
+
+  type chatToGenCodeParams = {
+    appId: number
+    prompt: string
   }
 
   type DeleteRequest = {
@@ -139,8 +145,10 @@ declare namespace API {
     id: number
   }
 
-  type getInfoParams = {
-    id: number
+  type listAppChatHistoryParams = {
+    appId: number
+    pageSize?: number
+    lastCreateTime?: string
   }
 
   type LoginUserVO = {
@@ -182,14 +190,6 @@ declare namespace API {
   }
 
   type ServerSentEventString = true
-
-  type pageParams = {
-    page?: PageChatHistory
-  }
-
-  type removeParams = {
-    id: number
-  }
 
   type serveStaticResourceParams = {
     deployKey: string

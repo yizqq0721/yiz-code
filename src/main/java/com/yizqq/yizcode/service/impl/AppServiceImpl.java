@@ -16,16 +16,20 @@ import com.yizqq.yizcode.mapper.AppMapper;
 import com.yizqq.yizcode.model.dto.app.AppQueryRequest;
 import com.yizqq.yizcode.model.entity.App;
 import com.yizqq.yizcode.model.entity.User;
+import com.yizqq.yizcode.model.enums.ChatHistoryMessageTypeEnum;
 import com.yizqq.yizcode.model.enums.CodeGenTypeEnum;
 import com.yizqq.yizcode.model.vo.AppVO;
 import com.yizqq.yizcode.model.vo.UserVO;
 import com.yizqq.yizcode.service.AppService;
+import com.yizqq.yizcode.service.ChatHistoryService;
 import com.yizqq.yizcode.service.UserService;
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
 import java.io.File;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +43,7 @@ import java.util.stream.Collectors;
  * @author <a href="https://github.com/yizqq0721">yizqq</a>
  */
 @Service
+@Slf4j
 public class AppServiceImpl extends ServiceImpl<AppMapper, App> implements AppService {
 
 
@@ -47,6 +52,9 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App> implements AppSe
 
     @Resource
     private AiCodeGeneratorFacade aiCodeGeneratorFacade;
+
+    @Resource
+    private ChatHistoryService chatHistoryService;
 
     @Override
     public AppVO getAppVO(App app) {
@@ -134,8 +142,22 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App> implements AppSe
         if (codeGenTypeEnum == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "应用代码生成类型错误");
         }
-        // 5. 调用 AI 生成代码（流式）
-        return aiCodeGeneratorFacade.generateAndSaveCodeStream(prompt, codeGenTypeEnum, appId);
+        // 5.保存对话记录
+        chatHistoryService.addChatMessage(appId, prompt, ChatHistoryMessageTypeEnum.USER.getValue(), loginUser.getId());
+        // 6. 调用 AI 生成代码（流式）
+        Flux<String> codeStream = aiCodeGeneratorFacade.generateAndSaveCodeStream(prompt, codeGenTypeEnum, appId);
+        // 7.收集AI响应内容，并在完成后保留到对话历史
+        StringBuilder aiResponseContent = new StringBuilder();
+        return codeStream.map(chuck -> {
+            // 收集 AI 响应内容
+            aiResponseContent.append(chuck);
+            return chuck;
+        }).doOnComplete(() -> {
+            chatHistoryService.addChatMessage(appId, aiResponseContent.toString(), ChatHistoryMessageTypeEnum.AI.getValue(), loginUser.getId());
+        }).doOnError(error -> {
+            String errorMessage = "AI 响应错误：" +  error.getMessage();
+            chatHistoryService.addChatMessage(appId,errorMessage , ChatHistoryMessageTypeEnum.AI.getValue(), loginUser.getId());
+        });
     }
 
     @Override
@@ -181,7 +203,31 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App> implements AppSe
         boolean updateResult = this.updateById(updateApp);
         ThrowUtils.throwIf(!updateResult, ErrorCode.OPERATION_ERROR, "更新应用部署信息失败");
         // 10. 构建应用访问 URL
-        String appDeployUrl = String.format("%s/%s/", AppConstant.CODE_DEPLOY_HOST, deployKey);
-        return appDeployUrl;
+        return String.format("%s/%s/", AppConstant.CODE_DEPLOY_HOST, deployKey);
+    }
+
+    /**
+     * 删除应用时，关联删除对话历史
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public boolean removeById(Serializable id) {
+        if (id == null) {
+            return false;
+        }
+        long appId = Long.parseLong(id.toString());
+        if (appId <= 0) {
+            return false;
+        }
+        // 先删除关联的对话历史
+        try {
+            chatHistoryService.deleteByAppId(appId);
+        } catch (Exception e) {
+            log.error("删除应用关联的对话历史失败：{}", e.getMessage());
+        }
+        // 删除应用
+        return super.removeById(id);
     }
 }

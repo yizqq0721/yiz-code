@@ -1,0 +1,121 @@
+- generic [active] [ref=f2e1]:
+  - generic [ref=f2e3]:
+    - generic [ref=f2e5]:
+      - link [ref=f2e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f2e8]:
+          - img "Logo" [ref=f2e9]
+          - heading "鱼皮应用生成" [level=1] [ref=f2e10]
+      - menu [ref=f2e12]:
+        - menuitem "home 主页" [ref=f2e13] [cursor=pointer]:
+          - img "home" [ref=f2e14]
+          - generic [ref=f2e17]: 主页
+        - menuitem "用户管理" [ref=f2e18] [cursor=pointer]
+        - menuitem "应用管理" [ref=f2e20] [cursor=pointer]
+        - menuitem [ref=f2e22] [cursor=pointer]:
+          - link "编程导航" [ref=f2e24]:
+            - /url: https://www.codefather.cn
+      - generic [ref=f2e25]: noName
+    - main [ref=f2e32]:
+      - generic [ref=f2e200]:
+        - generic [ref=f2e201]:
+          - heading "AI 应用生成平台" [level=1] [ref=f2e202]
+          - paragraph [ref=f2e203]: 一句话轻松创建网站应用
+        - generic [ref=f2e204]:
+          - textbox "帮我创建个人博客网站" [ref=f2e205]
+          - button "↑" [ref=f2e207] [cursor=pointer]
+        - generic [ref=f2e209]:
+          - button "个人博客网站" [ref=f2e210] [cursor=pointer]
+          - button "企业官网" [ref=f2e212] [cursor=pointer]
+          - button "在线商城" [ref=f2e214] [cursor=pointer]
+          - button "作品展示网站" [ref=f2e216] [cursor=pointer]
+        - generic [ref=f2e218]:
+          - heading "我的作品" [level=2] [ref=f2e219]
+          - generic [ref=f2e220]:
+            - generic [ref=f2e221] [cursor=pointer]:
+              - generic [ref=f2e222]:
+                - generic [ref=f2e223]: 🤖
+                - button "查看对话" [ref=f2e227]
+              - generic [ref=f2e229]:
+                - generic [ref=f2e230]: "n"
+                - generic [ref=f2e233]:
+                  - heading "矿泉水介绍" [level=3] [ref=f2e234]
+                  - paragraph [ref=f2e235]: noName
+            - generic [ref=f2e236] [cursor=pointer]:
+              - generic [ref=f2e237]:
+                - generic [ref=f2e238]: 🤖
+                - button "查看对话" [ref=f2e242]
+              - generic [ref=f2e244]:
+                - generic [ref=f2e245]: "n"
+                - generic [ref=f2e248]:
+                  - heading "设计一个专业的企业官网，" [level=3] [ref=f2e249]
+                  - paragraph [ref=f2e250]: noName
+            - generic [ref=f2e251] [cursor=pointer]:
+              - generic [ref=f2e252]:
+                - generic [ref=f2e253]: 🤖
+                - button "查看对话" [ref=f2e257]
+              - generic [ref=f2e259]:
+                - generic [ref=f2e260]: "n"
+                - generic [ref=f2e263]:
+                  - heading "设计一个企业官网，包含公" [level=3] [ref=f2e264]
+                  - paragraph [ref=f2e265]: noName
+            - generic [ref=f2e266] [cursor=pointer]:
+              - generic [ref=f2e267]:
+                - generic [ref=f2e268]: 🤖
+                - generic [ref=f2e270]:
+                  - button "查看对话" [ref=f2e272]
+                  - button "查看作品" [ref=f2e275]
+              - generic [ref=f2e277]:
+                - generic [ref=f2e278]: "n"
+                - generic [ref=f2e281]:
+                  - heading "帮我写一个网页" [level=3] [ref=f2e282]
+                  - paragraph [ref=f2e283]: noName
+            - generic [ref=f2e284] [cursor=pointer]:
+              - generic [ref=f2e285]:
+                - generic [ref=f2e286]: 🤖
+                - generic [ref=f2e288]:
+                  - button "查看对话" [ref=f2e290]
+                  - button "查看作品" [ref=f2e293]
+              - generic [ref=f2e295]:
+                - generic [ref=f2e296]: "n"
+                - generic [ref=f2e299]:
+                  - heading "做个个人博客网页，总代码" [level=3] [ref=f2e300]
+                  - paragraph [ref=f2e301]: noName
+            - generic [ref=f2e302] [cursor=pointer]:
+              - generic [ref=f2e303]:
+                - generic [ref=f2e304]: 🤖
+                - button "查看对话" [ref=f2e308]
+              - generic [ref=f2e310]:
+                - generic [ref=f2e311]: "n"
+                - generic [ref=f2e314]:
+                  - heading "个人博客" [level=3] [ref=f2e315]
+                  - paragraph [ref=f2e316]: noName
+          - list [ref=f2e318]:
+            - listitem [ref=f2e319]: 共 6 个应用
+            - listitem "Previous Page" [ref=f2e320]:
+              - button [disabled] [ref=f2e321]:
+                - img "left" [ref=f2e322]
+            - listitem "1" [ref=f2e325] [cursor=pointer]
+            - listitem "Next Page" [ref=f2e327]:
+              - button [disabled] [ref=f2e328]:
+                - img "right" [ref=f2e329]
+        - generic [ref=f2e332]:
+          - heading "精选案例" [level=2] [ref=f2e333]
+          - list [ref=f2e335]:
+            - listitem [ref=f2e336]: 共 0 个案例
+            - listitem "Previous Page" [ref=f2e337]:
+              - button [disabled] [ref=f2e338]:
+                - img "left" [ref=f2e339]
+            - listitem "1" [ref=f2e342] [cursor=pointer]
+            - listitem "Next Page" [ref=f2e344]:
+              - button [disabled] [ref=f2e345]:
+                - img "right" [ref=f2e346]
+    - paragraph [ref=f2e185]:
+      - link "编程导航原创项目 by 程序员鱼皮" [ref=f2e186] [cursor=pointer]:
+        - /url: https://www.codefather.cn
+  - generic [ref=f2e187]:
+    - generic "Toggle devtools panel" [ref=f2e188] [cursor=pointer]
+    - generic "Toggle Component Inspector" [ref=f2e194] [cursor=pointer]
+  - generic [ref=f2e350]:
+    - img "close-circle" [ref=f2e351]
+    - text: 获取应用信息失败

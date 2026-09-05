@@ -1,0 +1,147 @@
+- generic [active] [ref=f1e1]:
+  - generic [ref=f1e3]:
+    - generic [ref=f1e5]:
+      - link [ref=f1e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f1e8]:
+          - img "Logo" [ref=f1e9]
+          - heading "鱼皮应用生成" [level=1] [ref=f1e10]
+      - menu [ref=f1e12]:
+        - menuitem "home 主页" [ref=f1e13] [cursor=pointer]:
+          - img "home" [ref=f1e14]
+          - generic [ref=f1e17]: 主页
+        - menuitem "用户管理" [ref=f1e18] [cursor=pointer]
+        - menuitem "应用管理" [ref=f1e20] [cursor=pointer]
+        - menuitem [ref=f1e22] [cursor=pointer]:
+          - link "编程导航" [ref=f1e24]:
+            - /url: https://www.codefather.cn
+      - generic [ref=f1e25]: noName
+    - main [ref=f1e32]:
+      - generic [ref=f1e132]:
+        - generic [ref=f1e133]:
+          - generic [ref=f1e134]:
+            - heading "矿泉水介绍" [level=1] [ref=f1e135]
+            - generic [ref=f1e136]: 原生多文件模式
+          - generic [ref=f1e137]:
+            - button "info-circle 应用详情" [ref=f1e138] [cursor=pointer]:
+              - img "info-circle" [ref=f1e139]
+              - generic [ref=f1e143]: 应用详情
+            - generic [ref=f1e144]:
+              - button "download 下载代码" [disabled]:
+                - img "download"
+                - generic: 下载代码
+            - button "cloud-upload 部署" [ref=f1e145] [cursor=pointer]:
+              - img "cloud-upload" [ref=f1e146]
+              - generic [ref=f1e150]: 部署
+        - generic [ref=f1e151]:
+          - generic [ref=f1e152]:
+            - generic [ref=f1e153]:
+              - generic [ref=f1e154]: 做矿泉水介绍网页，总代码在100行以内
+              - generic [ref=f1e165]:
+                - code [ref=f1e167]:
+                  - generic [ref=f1e168]: <!DOCTYPE html>
+                  - generic [ref=f1e169]: <html lang="zh-CN">
+                  - generic [ref=f1e170]: <head>
+                  - generic [ref=f1e171]: <meta charset="UTF-8">
+                  - generic [ref=f1e172]: <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                  - generic [ref=f1e173]: <title>
+                  - text: 清泉矿泉水
+                  - generic [ref=f1e174]: </title>
+                  - generic [ref=f1e175]: <link rel="stylesheet" href="style.css">
+                  - generic [ref=f1e176]: </head>
+                  - generic [ref=f1e177]: <body>
+                  - generic [ref=f1e178]: <nav>
+                  - generic [ref=f1e179]: <div class="logo">
+                  - text: 💧清泉
+                  - generic [ref=f1e180]: </div>
+                  - generic [ref=f1e181]: <ul>
+                  - generic [ref=f1e182]: <li>
+                  - text: 首页
+                  - generic [ref=f1e183]: </li>
+                  - generic [ref=f1e184]: <li>
+                  - text: 产品
+                  - generic [ref=f1e185]: </li>
+                  - generic [ref=f1e186]: <li>
+                  - text: 溯源
+                  - generic [ref=f1e187]: </li>
+                  - generic [ref=f1e188]: </ul>
+                  - generic [ref=f1e189]: </nav>
+                  - generic [ref=f1e190]: <section class="hero">
+                  - generic [ref=f1e191]: <img src="https://picsum.photos/800/500" alt="矿泉水山泉">
+                  - generic [ref=f1e192]: <h1>
+                  - text: 来自深山的纯净
+                  - generic [ref=f1e193]: </h1>
+                  - generic [ref=f1e194]: <p>
+                  - text: 天然矿物质 · 每一滴都珍贵
+                  - generic [ref=f1e195]: </p>
+                  - generic [ref=f1e196]: <button id="btn">
+                  - text: 了解更多
+                  - generic [ref=f1e197]: </button>
+                  - generic [ref=f1e198]: <p id="msg" class="hidden">
+                  - text: 富含钙、镁、钾，天然弱碱性，呵护健康。
+                  - generic [ref=f1e199]: </p>
+                  - generic [ref=f1e200]: </section>
+                  - generic [ref=f1e201]: <section class="features">
+                  - generic [ref=f1e202]: <div class="card" data-tip="水源海拔3000米">
+                  - text: ⛰️纯净水源
+                  - generic [ref=f1e203]: </div>
+                  - generic [ref=f1e204]: <div class="card" data-tip="含多种微量元素">
+                  - text: 🌿天然矿物
+                  - generic [ref=f1e205]: </div>
+                  - generic [ref=f1e206]: <div class="card" data-tip="PH值7.5弱碱性">
+                  - text: 💧弱碱性
+                  - generic [ref=f1e207]: </div>
+                  - generic [ref=f1e208]: </section>
+                  - generic [ref=f1e209]: <div id="tip" class="tip hidden">
+                  - generic [ref=f1e210]: </div>
+                  - generic [ref=f1e211]: <footer>
+                  - text: © 2025 清泉矿泉水 · 用心做好水
+                  - generic [ref=f1e212]: </footer>
+                  - generic [ref=f1e213]: <script src="script.js">
+                  - generic [ref=f1e214]: </script>
+                  - generic [ref=f1e215]: </body>
+                  - generic [ref=f1e216]: </html>
+                - code [ref=f1e218]: "* { margin:0; padding:0; box-sizing:border-box; } body { font-family: Arial, sans-serif; text-align:center; background:#f0f9ff; line-height:1.6; } nav { display:flex; justify-content:space-between; align-items:center; padding:12px 30px; background:#fff; border-bottom:2px solid #b3e5fc; } .logo { font-size:1.4rem; font-weight:bold; color:#0288d1; } nav ul { display:flex; gap:18px; list-style:none; color:#555; cursor:pointer; } nav li:hover { color:#0288d1; } .hero { position:relative; padding:40px 20px; color:#fff; overflow:hidden; } .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(0.8); } .hero h1, .hero p, .hero button, .hero #msg { position:relative; z-index:1; } .hero h1 { font-size:2.5rem; margin-top:60px; text-shadow:0 2px 8px rgba(0,0,0,0.5); } .hero p { font-size:1.2rem; text-shadow:0 1px 4px rgba(0,0,0,0.5); } button { margin:15px auto 0; padding:10px 28px; background:#0288d1; border:none; border-radius:25px; color:#fff; cursor:pointer; font-size:1rem; display:block; transition:background .3s; } button:hover { background:#01579b; } .hidden { display:none; } #msg { margin-top:15px; background:rgba(0,0,0,0.6); display:inline-block; padding:10px 20px; border-radius:10px; font-size:0.9rem; } .features { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:35px 15px; } .card { background:#fff; padding:25px 28px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); cursor:pointer; transition:transform .2s; font-weight:bold; min-width:120px; } .card:hover { transform:scale(1.06); background:#e1f5fe; } .tip { position:fixed; bottom:60px; left:50%; transform:translateX(-50%); background:#0288d1; color:#fff; padding:8px 18px; border-radius:20px; font-size:0.85rem; z-index:99; box-shadow:0 4px 12px rgba(0,0,0,0.2); } footer { background:#263238; color:#fff; padding:12px; font-size:0.85rem; } @media (max-width:600px) { nav { flex-direction:column; gap:6px; } .hero h1 { font-size:1.8rem; margin-top:40px; } .features { padding:20px 10px; } .card { min-width:90px; padding:18px 16px; } }"
+                - code [ref=f1e220]:
+                  - text: "document.getElementById('btn').addEventListener('click', () => { const msg = document.getElementById('msg'); msg.classList.toggle('hidden'); }); const tipBox = document.getElementById('tip'); document.querySelectorAll('.card').forEach("
+                  - generic [ref=f1e221]: card =>
+                  - text: "{ card.addEventListener('mouseenter', () => { tipBox.textContent = card.dataset.tip; tipBox.classList.remove('hidden'); }); card.addEventListener('mouseleave', () => tipBox.classList.add('hidden')); card.addEventListener('click', () => { tipBox.textContent = card.dataset.tip; tipBox.classList.remove('hidden'); setTimeout(() => tipBox.classList.add('hidden'), 1200); }); });"
+            - generic [ref=f1e223]:
+              - textbox "请描述你想生成的网站，越详细效果越好哦" [ref=f1e224]
+              - button [ref=f1e226] [cursor=pointer]:
+                - img "send" [ref=f1e227]
+          - generic [ref=f1e230]:
+            - generic [ref=f1e231]:
+              - heading "生成后的网页展示" [level=3] [ref=f1e232]
+              - generic [ref=f1e233]:
+                - button "edit 编辑模式" [ref=f1e234] [cursor=pointer]:
+                  - img "edit" [ref=f1e235]
+                  - generic [ref=f1e238]: 编辑模式
+                - button "export 新窗口打开" [ref=f1e239] [cursor=pointer]:
+                  - img "export" [ref=f1e240]
+                  - generic [ref=f1e243]: 新窗口打开
+            - iframe [ref=f1e245]:
+              - generic [ref=f2e1]:
+                - navigation [ref=f2e2]:
+                  - generic [ref=f2e3]: 💧清泉
+                  - list [ref=f2e4] [cursor=pointer]:
+                    - listitem [ref=f2e5]: 首页
+                    - listitem [ref=f2e6]: 产品
+                    - listitem [ref=f2e7]: 溯源
+                - generic [ref=f2e8]:
+                  - img "矿泉水山泉" [ref=f2e9]
+                  - heading "来自深山的纯净" [level=1] [ref=f2e10]
+                  - paragraph [ref=f2e11]: 天然矿物质 · 每一滴都珍贵
+                  - button "了解更多" [ref=f2e12] [cursor=pointer]
+                  - paragraph [ref=f2e13]: 富含钙、镁、钾，天然弱碱性，呵护健康。
+                - generic [ref=f2e14]:
+                  - generic [ref=f2e15] [cursor=pointer]: ⛰️纯净水源
+                  - generic [ref=f2e16] [cursor=pointer]: 🌿天然矿物
+                  - generic [ref=f2e17] [cursor=pointer]: 💧弱碱性
+                - contentinfo [ref=f2e18]: © 2025 清泉矿泉水 · 用心做好水
+    - paragraph [ref=f1e90]:
+      - link "编程导航原创项目 by 程序员鱼皮" [ref=f1e91] [cursor=pointer]:
+        - /url: https://www.codefather.cn
+  - generic [ref=f1e92]:
+    - generic "Toggle devtools panel" [ref=f1e93] [cursor=pointer]
+    - generic "Toggle Component Inspector" [ref=f1e99] [cursor=pointer]

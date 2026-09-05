@@ -1,0 +1,176 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e3]:
+    - generic [ref=f3e5]:
+      - link [ref=f3e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f3e8]:
+          - img "Logo" [ref=f3e9]
+          - heading "鱼皮应用生成" [level=1] [ref=f3e10]
+      - menu [ref=f3e12]:
+        - menuitem "home 主页" [ref=f3e13] [cursor=pointer]:
+          - img "home" [ref=f3e14]
+          - generic [ref=f3e17]: 主页
+        - menuitem "用户管理" [ref=f3e18] [cursor=pointer]
+        - menuitem "应用管理" [ref=f3e20] [cursor=pointer]
+        - menuitem [ref=f3e22] [cursor=pointer]:
+          - link "编程导航" [ref=f3e24]:
+            - /url: https://www.codefather.cn
+      - generic [ref=f3e25]: noName
+    - main [ref=f3e32]:
+      - generic [ref=f3e33]:
+        - generic [ref=f3e34]:
+          - generic [ref=f3e36]:
+            - generic "应用名称" [ref=f3e38]: "应用名称 :"
+            - textbox "输入应用名称" [ref=f3e42]
+          - generic [ref=f3e44]:
+            - generic "创建者" [ref=f3e46]: "创建者 :"
+            - textbox "输入用户ID" [ref=f3e50]
+          - generic [ref=f3e52]:
+            - generic "生成类型" [ref=f3e54]: "生成类型 :"
+            - generic [ref=f3e59] [cursor=pointer]:
+              - combobox [ref=f3e61]
+              - generic: 选择生成类型
+          - button "搜 索" [ref=f3e67] [cursor=pointer]
+        - separator [ref=f3e69]
+        - generic [ref=f3e72]:
+          - table [ref=f3e76]:
+            - rowgroup [ref=f3e88]:
+              - row [ref=f3e89]:
+                - columnheader "ID" [ref=f3e90]
+                - columnheader "应用名称" [ref=f3e91]
+                - columnheader "封面" [ref=f3e92]
+                - columnheader "初始提示词" [ref=f3e93]
+                - columnheader "生成类型" [ref=f3e94]
+                - columnheader "优先级" [ref=f3e95]
+                - columnheader "部署时间" [ref=f3e96]
+                - columnheader "创建者" [ref=f3e97]
+                - columnheader "创建时间" [ref=f3e98]
+                - columnheader "操作" [ref=f3e99]
+            - rowgroup [ref=f3e100]:
+              - row [ref=f3e101]:
+                - cell "453799400838299648" [ref=f3e102]
+                - cell "矿泉水介绍" [ref=f3e103]
+                - cell "无封面" [ref=f3e104]
+                - cell "做矿泉水介绍网页，总代码在100行以内" [ref=f3e106]
+                - cell "原生多文件模式" [ref=f3e108]
+                - cell "0" [ref=f3e109]
+                - cell "2026-09-05 19:45:25" [ref=f3e110]
+                - cell "n noName" [ref=f3e111]:
+                  - generic [ref=f3e112]:
+                    - generic [ref=f3e113]: "n"
+                    - generic [ref=f3e115]: noName
+                - cell "2026-09-05 18:57:48" [ref=f3e116]
+                - cell [ref=f3e117]:
+                  - generic [ref=f3e118]:
+                    - button "编 辑" [ref=f3e120] [cursor=pointer]
+                    - button "精 选" [ref=f3e123] [cursor=pointer]
+                    - button "删 除" [ref=f3e126] [cursor=pointer]
+              - row [ref=f3e128]:
+                - cell "453794073082363904" [ref=f3e129]
+                - cell "设计一个专业的企业官网，" [ref=f3e130]
+                - cell "无封面" [ref=f3e131]
+                - cell "设计一个专业的企业官网，包含公司介绍、产品服务展示、新闻资讯、联系我们等页面。采用商务风格的设计，包含轮播图、产品展示卡片、团队介绍、客户案例展示，支持多语言切换和在线客服功能。" [ref=f3e133]
+                - cell "原生多文件模式" [ref=f3e135]
+                - cell "0" [ref=f3e136]
+                - cell "未部署" [ref=f3e137]
+                - cell "n noName" [ref=f3e138]:
+                  - generic [ref=f3e139]:
+                    - generic [ref=f3e140]: "n"
+                    - generic [ref=f3e142]: noName
+                - cell "2026-09-05 18:36:38" [ref=f3e143]
+                - cell [ref=f3e144]:
+                  - generic [ref=f3e145]:
+                    - button "编 辑" [ref=f3e147] [cursor=pointer]
+                    - button "精 选" [ref=f3e150] [cursor=pointer]
+                    - button "删 除" [ref=f3e153] [cursor=pointer]
+              - row [ref=f3e155]:
+                - cell "453792600961351680" [ref=f3e156]
+                - cell "设计一个企业官网，包含公" [ref=f3e157]
+                - cell "无封面" [ref=f3e158]
+                - cell "设计一个企业官网，包含公司介绍、产品服务展示、新闻资讯、联系我们等页面。页面简单一些， 代码越少越好" [ref=f3e160]
+                - cell "原生多文件模式" [ref=f3e162]
+                - cell "0" [ref=f3e163]
+                - cell "未部署" [ref=f3e164]
+                - cell "n noName" [ref=f3e165]:
+                  - generic [ref=f3e166]:
+                    - generic [ref=f3e167]: "n"
+                    - generic [ref=f3e169]: noName
+                - cell "2026-09-05 18:30:47" [ref=f3e170]
+                - cell [ref=f3e171]:
+                  - generic [ref=f3e172]:
+                    - button "编 辑" [ref=f3e174] [cursor=pointer]
+                    - button "精 选" [ref=f3e177] [cursor=pointer]
+                    - button "删 除" [ref=f3e180] [cursor=pointer]
+              - row [ref=f3e182]:
+                - cell "453145922050723840" [ref=f3e183]
+                - cell "帮我写一个网页" [ref=f3e184]
+                - cell "无封面" [ref=f3e185]
+                - cell "帮我写一个网页，代码40行左右，内容随意" [ref=f3e187]
+                - cell "原生多文件模式" [ref=f3e189]
+                - cell "0" [ref=f3e190]
+                - cell "2026-09-05 18:10:17" [ref=f3e191]
+                - cell "n noName" [ref=f3e192]:
+                  - generic [ref=f3e193]:
+                    - generic [ref=f3e194]: "n"
+                    - generic [ref=f3e196]: noName
+                - cell "2026-09-03 23:41:06" [ref=f3e197]
+                - cell [ref=f3e198]:
+                  - generic [ref=f3e199]:
+                    - button "编 辑" [ref=f3e201] [cursor=pointer]
+                    - button "精 选" [ref=f3e204] [cursor=pointer]
+                    - button "删 除" [ref=f3e207] [cursor=pointer]
+              - row [ref=f3e209]:
+                - cell "452017825117229056" [ref=f3e210]
+                - cell "做个个人博客网页，总代码" [ref=f3e211]
+                - cell "无封面" [ref=f3e212]
+                - cell "做个个人博客网页，总代码在30行以内" [ref=f3e214]
+                - cell "原生多文件模式" [ref=f3e216]
+                - cell "0" [ref=f3e217]
+                - cell "2026-09-01 22:11:29" [ref=f3e218]
+                - cell "n noName" [ref=f3e219]:
+                  - generic [ref=f3e220]:
+                    - generic [ref=f3e221]: "n"
+                    - generic [ref=f3e223]: noName
+                - cell "2026-08-31 20:58:27" [ref=f3e224]
+                - cell [ref=f3e225]:
+                  - generic [ref=f3e226]:
+                    - button "编 辑" [ref=f3e228] [cursor=pointer]
+                    - button "精 选" [ref=f3e231] [cursor=pointer]
+                    - button "删 除" [ref=f3e234] [cursor=pointer]
+              - row [ref=f3e236]:
+                - cell "452001387031560192" [ref=f3e237]
+                - cell "个人博客" [ref=f3e238]
+                - cell "无封面" [ref=f3e239]
+                - cell "做个个人博客" [ref=f3e241]
+                - cell "原生多文件模式" [ref=f3e243]
+                - cell "0" [ref=f3e244]
+                - cell "未部署" [ref=f3e245]
+                - cell "n noName" [ref=f3e246]:
+                  - generic [ref=f3e247]:
+                    - generic [ref=f3e248]: "n"
+                    - generic [ref=f3e250]: noName
+                - cell "2026-08-31 19:53:08" [ref=f3e251]
+                - cell [ref=f3e252]:
+                  - generic [ref=f3e253]:
+                    - button "编 辑" [ref=f3e255] [cursor=pointer]
+                    - button "精 选" [ref=f3e258] [cursor=pointer]
+                    - button "删 除" [ref=f3e261] [cursor=pointer]
+          - list [ref=f3e263]:
+            - listitem [ref=f3e264]: 共 6 条
+            - listitem "Previous Page" [ref=f3e265]:
+              - button [disabled] [ref=f3e266]:
+                - img "left" [ref=f3e267]
+            - listitem "1" [ref=f3e270] [cursor=pointer]
+            - listitem "Next Page" [ref=f3e272]:
+              - button [disabled] [ref=f3e273]:
+                - img "right" [ref=f3e274]
+            - listitem [ref=f3e277]:
+              - generic [ref=f3e279] [cursor=pointer]:
+                - combobox [ref=f3e281]
+                - generic [ref=f3e282]: 10 / page
+    - paragraph [ref=f3e285]:
+      - link "编程导航原创项目 by 程序员鱼皮" [ref=f3e286] [cursor=pointer]:
+        - /url: https://www.codefather.cn
+  - generic [ref=f3e287]:
+    - generic "Toggle devtools panel" [ref=f3e288] [cursor=pointer]
+    - generic "Toggle Component Inspector" [ref=f3e294] [cursor=pointer]

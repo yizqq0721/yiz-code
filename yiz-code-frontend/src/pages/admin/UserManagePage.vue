@@ -47,6 +47,9 @@ import { computed, onMounted, reactive, ref } from 'vue'
 import { deleteUser, listUserVoByPage } from '@/api/userController.ts'
 import { message } from 'ant-design-vue'
 import dayjs from 'dayjs'
+// 大整数安全解析：修复后端雪花 ID（19 位 Long）在 JSON 解析时精度丢失的问题，
+// 保证用户记录中的 id 为精确字符串，删除用户时才能携带正确的 ID 请求后端
+import { bigIntSafeTransformResponse } from '@/utils/jsonBigInt'
 
 const columns = [
   {
@@ -95,9 +98,18 @@ const searchParams = reactive<API.UserQueryRequest>({
 
 // 获取数据
 const fetchData = async () => {
-  const res = await listUserVoByPage({
-    ...searchParams,
-  })
+  // 【修复雪花 ID 精度丢失】
+  // 用户 ID 是 19 位 Long，默认 JSON 解析会把 id 四舍五入，
+  // 导致删除用户时携带错误 ID、后端 404（删除失败）。
+  // 通过 transformResponse 用 json-bigint 解析响应，记录中的 id 保持为精确字符串。
+  const res = await listUserVoByPage(
+    {
+      ...searchParams,
+    },
+    {
+      transformResponse: [bigIntSafeTransformResponse],
+    },
+  )
   if (res.data.data) {
     data.value = res.data.data.records ?? []
     total.value = res.data.data.totalRow ?? 0
@@ -132,6 +144,7 @@ const doSearch = () => {
 }
 
 // 删除数据
+// record.id 经 json-bigint 解析后是精确的 ID 字符串（雪花 ID 不会精度丢失）
 const doDelete = async (id: number) => {
   if (!id) {
     return

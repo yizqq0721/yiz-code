@@ -1,0 +1,46 @@
+- generic [active] [ref=f1e1]:
+  - generic [ref=f1e3]:
+    - generic [ref=f1e5]:
+      - link [ref=f1e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f1e8]:
+          - img "Logo" [ref=f1e9]
+          - heading "鱼皮应用生成" [level=1] [ref=f1e10]
+      - menu [ref=f1e12]:
+        - menuitem "home 主页" [ref=f1e13] [cursor=pointer]:
+          - img "home" [ref=f1e14]
+          - generic [ref=f1e17]: 主页
+        - menuitem "用户管理" [ref=f1e18] [cursor=pointer]
+        - menuitem "应用管理" [ref=f1e20] [cursor=pointer]
+        - menuitem [ref=f1e22] [cursor=pointer]:
+          - link "编程导航" [ref=f1e24]:
+            - /url: https://www.codefather.cn
+      - generic [ref=f1e25]: noName
+    - main [ref=f1e32]:
+      - generic [ref=f1e33]:
+        - generic [ref=f1e34]:
+          - generic [ref=f1e36]:
+            - generic "应用ID" [ref=f1e38]: "应用ID :"
+            - textbox "输入应用ID" [ref=f1e42]
+          - button "搜 索" [ref=f1e48] [cursor=pointer]
+        - separator [ref=f1e50]
+        - table [ref=f1e57]:
+          - rowgroup [ref=f1e66]:
+            - row [ref=f1e67]:
+              - columnheader "ID" [ref=f1e68]
+              - columnheader "消息内容" [ref=f1e69]
+              - columnheader "消息类型" [ref=f1e70]
+              - columnheader "应用ID" [ref=f1e71]
+              - columnheader "用户ID" [ref=f1e72]
+              - columnheader "创建时间" [ref=f1e73]
+              - columnheader "操作" [ref=f1e74]
+          - rowgroup [ref=f1e75]:
+            - row [ref=f1e76]:
+              - cell [ref=f1e77]:
+                - paragraph [ref=f1e87]: No data
+    - paragraph [ref=f1e90]:
+      - link "编程导航原创项目 by 程序员鱼皮" [ref=f1e91] [cursor=pointer]:
+        - /url: https://www.codefather.cn
+  - generic [ref=f1e92]:
+    - generic "Toggle devtools panel" [ref=f1e93] [cursor=pointer]
+    - generic "Toggle Component Inspector" [ref=f1e99] [cursor=pointer]

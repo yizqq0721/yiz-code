@@ -1,0 +1,90 @@
+- generic [ref=f3e1]:
+  - generic [ref=f3e3]:
+    - generic [ref=f3e5]:
+      - link [ref=f3e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f3e8]:
+          - img "Logo" [ref=f3e9]
+          - heading "鱼皮应用生成" [level=1] [ref=f3e10]
+      - menu [ref=f3e12]:
+        - menuitem "home 主页" [ref=f3e13] [cursor=pointer]:
+          - img "home" [ref=f3e14]
+          - generic [ref=f3e17]: 主页
+        - menuitem "用户管理" [ref=f3e18] [cursor=pointer]
+        - menuitem "应用管理" [ref=f3e20] [cursor=pointer]
+        - menuitem [ref=f3e22] [cursor=pointer]:
+          - link "编程导航" [ref=f3e24]:
+            - /url: https://www.codefather.cn
+      - generic [ref=f3e25]: noName
+    - main [ref=f3e32]:
+      - generic [ref=f3e33]:
+        - generic [ref=f3e34]:
+          - generic [ref=f3e36]:
+            - generic "账号" [ref=f3e38]: "账号 :"
+            - textbox "输入账号" [ref=f3e42]
+          - generic [ref=f3e44]:
+            - generic "用户名" [ref=f3e46]: "用户名 :"
+            - textbox "输入用户名" [ref=f3e50]
+          - button "搜 索" [ref=f3e56] [cursor=pointer]
+        - separator [ref=f3e58]
+        - generic [ref=f3e61]:
+          - table [ref=f3e65]:
+            - rowgroup [ref=f3e67]:
+              - row [ref=f3e68]:
+                - columnheader "id" [ref=f3e69]
+                - columnheader "账号" [ref=f3e70]
+                - columnheader "用户名" [ref=f3e71]
+                - columnheader "头像" [ref=f3e72]
+                - columnheader "简介" [ref=f3e73]
+                - columnheader "用户角色" [ref=f3e74]
+                - columnheader "创建时间" [ref=f3e75]
+                - columnheader "操作" [ref=f3e76]
+            - rowgroup [ref=f3e77]:
+              - row [ref=f3e78]:
+                - cell "444808945297420288" [ref=f3e79]
+                - cell "yizqq" [ref=f3e80]
+                - cell "noName" [ref=f3e81]
+                - cell [ref=f3e82]:
+                  - generic [ref=f3e85] [cursor=pointer]:
+                    - img "eye" [ref=f3e86]
+                    - text: Preview
+                - cell [ref=f3e89]
+                - cell "普通用户" [ref=f3e90]
+                - cell "2026-08-11 23:32:56" [ref=f3e93]
+                - cell [ref=f3e94]:
+                  - button "删 除" [active] [ref=f3e95] [cursor=pointer]
+              - row [ref=f3e97]:
+                - cell "445937243708653568" [ref=f3e98]
+                - cell "yizqq2" [ref=f3e99]
+                - cell "noName" [ref=f3e100]
+                - cell [ref=f3e101]:
+                  - generic [ref=f3e104] [cursor=pointer]:
+                    - img "eye" [ref=f3e105]
+                    - text: Preview
+                - cell [ref=f3e108]
+                - cell "管理员" [ref=f3e109]
+                - cell "2026-08-15 02:16:24" [ref=f3e112]
+                - cell [ref=f3e113]:
+                  - button "删 除" [ref=f3e114] [cursor=pointer]
+          - list [ref=f3e116]:
+            - listitem [ref=f3e117]: 共 2 条
+            - listitem "Previous Page" [ref=f3e118]:
+              - button [disabled] [ref=f3e119]:
+                - img "left" [ref=f3e120]
+            - listitem "1" [ref=f3e123] [cursor=pointer]
+            - listitem "Next Page" [ref=f3e125]:
+              - button [disabled] [ref=f3e126]:
+                - img "right" [ref=f3e127]
+            - listitem [ref=f3e130]:
+              - generic [ref=f3e132] [cursor=pointer]:
+                - combobox [ref=f3e134]
+                - generic [ref=f3e135]: 10 / page
+    - paragraph [ref=f3e138]:
+      - link "编程导航原创项目 by 程序员鱼皮" [ref=f3e139] [cursor=pointer]:
+        - /url: https://www.codefather.cn
+  - generic [ref=f3e140]:
+    - generic "Toggle devtools panel" [ref=f3e141] [cursor=pointer]
+    - generic "Toggle Component Inspector" [ref=f3e147] [cursor=pointer]
+  - generic [ref=f3e153]:
+    - img "check-circle" [ref=f3e154]
+    - text: 删除成功

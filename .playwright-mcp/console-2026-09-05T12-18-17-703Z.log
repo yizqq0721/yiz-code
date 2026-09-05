@@ -1,0 +1,2 @@
+[  290590ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:8080/api/static/multi_file_453818629327171584/style.css:0
+[  290590ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:8080/api/static/multi_file_453818629327171584/script.js:0

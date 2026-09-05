@@ -8,6 +8,7 @@ import com.yizqq.yizcode.model.entity.User;
 import com.yizqq.yizcode.model.vo.AppVO;
 import reactor.core.publisher.Flux;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -66,4 +67,5 @@ public interface AppService extends IService<App> {
      * @return 可访问的部署地址
      */
     String deployApp(Long appId, User loginUser);
+
 }

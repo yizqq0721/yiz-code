@@ -1,0 +1,24 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - link [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e8]:
+          - img "Logo" [ref=e9]
+          - heading "鱼皮应用生成" [level=1] [ref=e10]
+      - menu [ref=e12]:
+        - menuitem "home 主页" [ref=e13] [cursor=pointer]:
+          - img "home" [ref=e14]
+          - generic [ref=e17]: 主页
+        - menuitem [ref=e18] [cursor=pointer]:
+          - link "编程导航" [ref=e20]:
+            - /url: https://www.codefather.cn
+      - link "登 录" [ref=e24] [cursor=pointer]:
+        - /url: /user/login
+    - main
+    - paragraph [ref=e28]:
+      - link "编程导航原创项目 by 程序员鱼皮" [ref=e29] [cursor=pointer]:
+        - /url: https://www.codefather.cn
+  - generic [ref=e30]:
+    - generic "Toggle devtools panel" [ref=e31] [cursor=pointer]
+    - generic "Toggle Component Inspector" [ref=e37] [cursor=pointer]

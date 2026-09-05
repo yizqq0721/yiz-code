@@ -1,0 +1,3 @@
+[    2616ms] [ERROR] 获取登录用户信息失败： AxiosError @ http://localhost:5173/src/stores/LoginUser.ts?t=1788610461606:17
+[    2646ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8080/api/user/get/login:0
+[    2750ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://www.chromium.org/developers/design-documents/create-amazing-password-forms) %o @ http://localhost:5173/user/login?redirect=/admin/chatManage:0

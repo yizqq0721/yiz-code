@@ -1,0 +1,104 @@
+- generic [active] [ref=f5e1]:
+  - generic [ref=f5e3]:
+    - generic [ref=f5e5]:
+      - link [ref=f5e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f5e8]:
+          - img "Logo" [ref=f5e9]
+          - heading "鱼皮应用生成" [level=1] [ref=f5e10]
+      - menu [ref=f5e12]:
+        - menuitem "home 主页" [ref=f5e13] [cursor=pointer]:
+          - img "home" [ref=f5e14]
+          - generic [ref=f5e17]: 主页
+        - menuitem "用户管理" [ref=f5e18] [cursor=pointer]
+        - menuitem "应用管理" [ref=f5e20] [cursor=pointer]
+        - menuitem [ref=f5e22] [cursor=pointer]:
+          - link "编程导航" [ref=f5e24]:
+            - /url: https://www.codefather.cn
+      - generic [ref=f5e25]: noName
+    - main [ref=f5e32]:
+      - generic [ref=f5e309]:
+        - heading "编辑应用信息" [level=1] [ref=f5e311]
+        - generic [ref=f5e312]:
+          - generic [ref=f5e313]:
+            - generic [ref=f5e314]: 基本信息
+            - generic [ref=f5e438]:
+              - generic [ref=f5e440]:
+                - generic "应用名称" [ref=f5e442]: "* 应用名称"
+                - generic [ref=f5e446]:
+                  - textbox "* 应用名称" [ref=f5e447]:
+                    - /placeholder: 请输入应用名称
+                    - text: 矿泉水介绍
+                  - generic [ref=f5e448]: 5 / 50
+              - generic [ref=f5e451]:
+                - generic "应用封面" [ref=f5e453]
+                - generic [ref=f5e454]:
+                  - textbox "应用封面" [ref=f5e457]:
+                    - /placeholder: 请输入封面图片链接
+                  - generic [ref=f5e458]: 支持图片链接，建议尺寸：400x300
+              - generic [ref=f5e460]:
+                - generic "优先级" [ref=f5e462]
+                - generic [ref=f5e463]:
+                  - generic [ref=f5e466]:
+                    - generic [ref=f5e467]:
+                      - button "Increase Value" [ref=f5e468] [cursor=pointer]:
+                        - img "up" [ref=f5e469]
+                      - button "Decrease Value" [disabled] [ref=f5e472]:
+                        - img "down" [ref=f5e473]
+                    - spinbutton "优先级" [ref=f5e477]: "0"
+                  - generic [ref=f5e478]: 设置为99表示精选应用
+              - generic [ref=f5e480]:
+                - generic "初始提示词" [ref=f5e482]
+                - generic [ref=f5e485]:
+                  - generic [ref=f5e486]:
+                    - textbox "初始提示词" [disabled] [ref=f5e487]:
+                      - /placeholder: 请输入初始提示词
+                      - text: 做矿泉水介绍网页，总代码在100行以内
+                    - text: 19 / 1000
+                  - generic [ref=f5e488]: 初始提示词不可修改
+              - generic [ref=f5e490]:
+                - generic "生成类型" [ref=f5e492]
+                - generic [ref=f5e495]:
+                  - textbox "生成类型" [disabled] [ref=f5e496]: 原生多文件模式
+                  - generic [ref=f5e497]: 生成类型不可修改
+              - generic [ref=f5e499]:
+                - generic "部署密钥" [ref=f5e501]
+                - generic [ref=f5e504]:
+                  - textbox "部署密钥" [disabled] [ref=f5e505]: WLl2YV
+                  - generic [ref=f5e506]: 部署密钥不可修改
+              - generic [ref=f5e512]:
+                - button "保存修改" [ref=f5e514] [cursor=pointer]
+                - button "重 置" [ref=f5e517] [cursor=pointer]
+                - button "进入对话" [ref=f5e520] [cursor=pointer]
+          - generic [ref=f5e402]:
+            - generic [ref=f5e403]: 应用信息
+            - table [ref=f5e409]:
+              - rowgroup [ref=f5e410]:
+                - row [ref=f5e411]:
+                  - rowheader "应用ID" [ref=f5e412]
+                  - cell "453799400838299648" [ref=f5e413]
+                  - rowheader "创建者" [ref=f5e415]
+                  - cell "n noName" [ref=f5e416]:
+                    - generic [ref=f5e418]:
+                      - generic [ref=f5e419]: "n"
+                      - generic [ref=f5e421]: noName
+                - row [ref=f5e422]:
+                  - rowheader "创建时间" [ref=f5e423]
+                  - cell "2026-09-05 18:57:48" [ref=f5e424]
+                  - rowheader "更新时间" [ref=f5e426]
+                  - cell "2026-09-05 20:04:31" [ref=f5e427]
+                - row [ref=f5e429]:
+                  - rowheader "部署时间" [ref=f5e430]
+                  - cell "2026-09-05 19:45:25" [ref=f5e431]
+                  - rowheader "访问链接" [ref=f5e433]
+                  - cell [ref=f5e434]:
+                    - button "查看预览" [ref=f5e436] [cursor=pointer]
+    - paragraph [ref=f5e286]:
+      - link "编程导航原创项目 by 程序员鱼皮" [ref=f5e287] [cursor=pointer]:
+        - /url: https://www.codefather.cn
+  - generic [ref=f5e288]:
+    - generic "Toggle devtools panel" [ref=f5e289] [cursor=pointer]
+    - generic "Toggle Component Inspector" [ref=f5e295] [cursor=pointer]
+  - generic [ref=f5e523]:
+    - img "check-circle" [ref=f5e524]
+    - text: 修改成功

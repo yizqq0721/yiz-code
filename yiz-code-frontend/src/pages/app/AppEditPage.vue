@@ -127,6 +127,9 @@ import { formatTime } from '@/utils/time'
 import UserInfo from '@/components/UserInfo.vue'
 import { getStaticPreviewUrl } from '@/config/env'
 import type { FormInstance } from 'ant-design-vue'
+// 大整数安全解析：修复后端雪花 ID（19 位 Long）在 JSON 解析时精度丢失的问题，
+// 保证 appInfo.id 为精确字符串，保存修改时才能携带正确的 ID 请求后端
+import { bigIntSafeTransformResponse } from '@/utils/jsonBigInt'
 
 const route = useRoute()
 const router = useRouter()
@@ -174,11 +177,21 @@ const fetchAppInfo = async () => {
 
   loading.value = true
   try {
-    const res = await getAppVoById({ id: id as unknown as number })
+    // 【修复雪花 ID 精度丢失】
+    // 应用 ID 是 19 位 Long，默认 JSON 解析会把 appInfo.id 四舍五入，
+    // 导致保存修改时携带错误 ID、后端 404（修改失败）。
+    // 通过 transformResponse 用 json-bigint 解析响应，appInfo.id 保持为精确字符串。
+    const res = await getAppVoById(
+      { id: id as unknown as number },
+      {
+        transformResponse: [bigIntSafeTransformResponse],
+      },
+    )
     if (res.data.code === 0 && res.data.data) {
       appInfo.value = res.data.data
 
       // 检查权限
+      // appInfo.userId 与 loginUser.id 均经 json-bigint 解析为精确字符串，可直接精确比较
       if (!isAdmin.value && appInfo.value.userId !== loginUserStore.loginUser.id) {
         message.error('您没有权限编辑此应用')
         router.push('/')
@@ -214,6 +227,7 @@ const handleSubmit = async () => {
     let res
     if (isAdmin.value) {
       // 管理员可以修改更多字段
+      // appInfo.id 经 json-bigint 解析后是精确字符串，后端可正确查找到对应应用
       res = await updateAppByAdmin({
         id: appInfo.value.id,
         appName: formData.appName,

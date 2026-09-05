@@ -1,0 +1,54 @@
+- generic [active] [ref=f8e1]:
+  - generic [ref=f8e3]:
+    - generic [ref=f8e5]:
+      - link [ref=f8e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f8e8]:
+          - img "Logo" [ref=f8e9]
+          - heading "鱼皮应用生成" [level=1] [ref=f8e10]
+      - menu [ref=f8e12]:
+        - menuitem "home 主页" [ref=f8e13] [cursor=pointer]:
+          - img "home" [ref=f8e14]
+          - generic [ref=f8e17]: 主页
+        - menuitem "用户管理" [ref=f8e18] [cursor=pointer]
+        - menuitem "应用管理" [ref=f8e20] [cursor=pointer]
+        - menuitem [ref=f8e22] [cursor=pointer]:
+          - link "编程导航" [ref=f8e24]:
+            - /url: https://www.codefather.cn
+      - generic [ref=f8e25]: noName
+    - main [ref=f8e32]:
+      - generic [ref=f8e199]:
+        - generic [ref=f8e200]:
+          - generic [ref=f8e201]:
+            - heading "修复验证测试应用" [level=1] [ref=f8e202]
+            - generic [ref=f8e203]: 原生多文件模式
+          - generic [ref=f8e204]:
+            - button "info-circle 应用详情" [ref=f8e205] [cursor=pointer]:
+              - img "info-circle" [ref=f8e206]
+              - generic [ref=f8e210]: 应用详情
+            - generic [ref=f8e211]:
+              - button "download 下载代码" [disabled]:
+                - img "download"
+                - generic: 下载代码
+            - button "cloud-upload 部署" [ref=f8e212] [cursor=pointer]:
+              - img "cloud-upload" [ref=f8e213]
+              - generic [ref=f8e217]: 部署
+        - generic [ref=f8e218]:
+          - generic [ref=f8e222]:
+            - textbox "请描述你想生成的网站，越详细效果越好哦" [ref=f8e223]
+            - button [ref=f8e225] [cursor=pointer]:
+              - img "send" [ref=f8e226]
+          - generic [ref=f8e229]:
+            - heading "生成后的网页展示" [level=3] [ref=f8e231]
+            - generic [ref=f8e233]:
+              - generic [ref=f8e234]: 🌐
+              - paragraph [ref=f8e235]: 网站文件生成完成后将在这里展示
+    - paragraph [ref=f8e185]:
+      - link "编程导航原创项目 by 程序员鱼皮" [ref=f8e186] [cursor=pointer]:
+        - /url: https://www.codefather.cn
+  - generic [ref=f8e187]:
+    - generic "Toggle devtools panel" [ref=f8e188] [cursor=pointer]
+    - generic "Toggle Component Inspector" [ref=f8e194] [cursor=pointer]
+  - generic [ref=f8e237]:
+    - img "check-circle" [ref=f8e238]
+    - text: 应用创建成功

@@ -96,6 +96,9 @@ import { listAppVoByPageByAdmin, deleteAppByAdmin, updateAppByAdmin } from '@/ap
 import { CODE_GEN_TYPE_OPTIONS, formatCodeGenType } from '@/utils/codeGenTypes'
 import { formatTime } from '@/utils/time'
 import UserInfo from '@/components/UserInfo.vue'
+// 大整数安全解析：修复后端雪花 ID（19 位 Long）在 JSON 解析时精度丢失的问题，
+// 保证表格中应用 id 为精确字符串，编辑/精选/删除才能携带正确的 ID 请求后端
+import { bigIntSafeTransformResponse } from '@/utils/jsonBigInt'
 
 const router = useRouter()
 
@@ -167,9 +170,19 @@ const searchParams = reactive<API.AppQueryRequest>({
 // 获取数据
 const fetchData = async () => {
   try {
-    const res = await listAppVoByPageByAdmin({
-      ...searchParams,
-    })
+    // 【修复雪花 ID 精度丢失】
+    // 应用 ID 是 19 位 Long，超出 JS Number 安全整数范围（2^53 - 1），
+    // 默认 JSON 解析会把 ID 四舍五入（如 453799400838299648 -> 453799400838299650），
+    // 导致后续编辑（跳转错误 ID）、精选、删除请求后端时查不到数据（404 请求数据不存在）。
+    // 通过 transformResponse 用 json-bigint 解析响应，记录中的 id 保持为精确字符串。
+    const res = await listAppVoByPageByAdmin(
+      {
+        ...searchParams,
+      },
+      {
+        transformResponse: [bigIntSafeTransformResponse],
+      },
+    )
     if (res.data.data) {
       data.value = res.data.data.records ?? []
       total.value = res.data.data.totalRow ?? 0
@@ -213,6 +226,7 @@ const doSearch = () => {
 }
 
 // 编辑应用
+// 注意：app.id 经 json-bigint 解析后是精确的 ID 字符串（雪花 ID 不会精度丢失）
 const editApp = (app: API.AppVO) => {
   router.push(`/app/edit/${app.id}`)
 }
@@ -224,6 +238,7 @@ const toggleFeatured = async (app: API.AppVO) => {
   const newPriority = app.priority === 99 ? 0 : 99
 
   try {
+    // app.id 是精确字符串，后端可正确查找到对应应用（后端会自行将字符串转为 Long）
     const res = await updateAppByAdmin({
       id: app.id,
       priority: newPriority,
@@ -243,6 +258,7 @@ const toggleFeatured = async (app: API.AppVO) => {
 }
 
 // 删除应用
+// 注意：record.id 经 json-bigint 解析后是精确的 ID 字符串（雪花 ID 不会精度丢失）
 const deleteApp = async (id: number | undefined) => {
   if (!id) return
 

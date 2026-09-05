@@ -1,0 +1,123 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - link [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e8]:
+          - img "Logo" [ref=e9]
+          - heading "鱼皮应用生成" [level=1] [ref=e10]
+      - menu [ref=e12]:
+        - menuitem "home 主页" [ref=e13] [cursor=pointer]:
+          - img "home" [ref=e14]
+          - generic [ref=e17]: 主页
+        - menuitem "用户管理" [ref=e79] [cursor=pointer]
+        - menuitem "应用管理" [ref=e81] [cursor=pointer]
+        - menuitem [ref=e83] [cursor=pointer]:
+          - link "编程导航" [ref=e85]:
+            - /url: https://www.codefather.cn
+      - generic [ref=e21]: noName
+    - main [ref=e26]:
+      - generic [ref=e92]:
+        - generic [ref=e93]:
+          - heading "AI 应用生成平台" [level=1] [ref=e94]
+          - paragraph [ref=e95]: 一句话轻松创建网站应用
+        - generic [ref=e96]:
+          - textbox "帮我创建个人博客网站" [ref=e97]
+          - button "↑" [ref=e99] [cursor=pointer]
+        - generic [ref=e101]:
+          - button "个人博客网站" [ref=e102] [cursor=pointer]
+          - button "企业官网" [ref=e104] [cursor=pointer]
+          - button "在线商城" [ref=e106] [cursor=pointer]
+          - button "作品展示网站" [ref=e108] [cursor=pointer]
+        - generic [ref=e110]:
+          - heading "我的作品" [level=2] [ref=e111]
+          - generic [ref=e112]:
+            - generic [ref=e113] [cursor=pointer]:
+              - generic [ref=e114]:
+                - generic [ref=e115]: 🤖
+                - generic [ref=e117]:
+                  - button "查看对话" [ref=e119]
+                  - button "查看作品" [ref=e122]
+              - generic [ref=e124]:
+                - generic [ref=e125]: "n"
+                - generic [ref=e128]:
+                  - heading "矿泉水介绍" [level=3] [ref=e129]
+                  - paragraph [ref=e130]: noName
+            - generic [ref=e131] [cursor=pointer]:
+              - generic [ref=e132]:
+                - generic [ref=e133]: 🤖
+                - button "查看对话" [ref=e137]
+              - generic [ref=e139]:
+                - generic [ref=e140]: "n"
+                - generic [ref=e143]:
+                  - heading "设计一个专业的企业官网，" [level=3] [ref=e144]
+                  - paragraph [ref=e145]: noName
+            - generic [ref=e146] [cursor=pointer]:
+              - generic [ref=e147]:
+                - generic [ref=e148]: 🤖
+                - button "查看对话" [ref=e152]
+              - generic [ref=e154]:
+                - generic [ref=e155]: "n"
+                - generic [ref=e158]:
+                  - heading "设计一个企业官网，包含公" [level=3] [ref=e159]
+                  - paragraph [ref=e160]: noName
+            - generic [ref=e161] [cursor=pointer]:
+              - generic [ref=e162]:
+                - generic [ref=e163]: 🤖
+                - generic [ref=e165]:
+                  - button "查看对话" [ref=e167]
+                  - button "查看作品" [ref=e170]
+              - generic [ref=e172]:
+                - generic [ref=e173]: "n"
+                - generic [ref=e176]:
+                  - heading "帮我写一个网页" [level=3] [ref=e177]
+                  - paragraph [ref=e178]: noName
+            - generic [ref=e179] [cursor=pointer]:
+              - generic [ref=e180]:
+                - generic [ref=e181]: 🤖
+                - generic [ref=e183]:
+                  - button "查看对话" [ref=e185]
+                  - button "查看作品" [ref=e188]
+              - generic [ref=e190]:
+                - generic [ref=e191]: "n"
+                - generic [ref=e194]:
+                  - heading "做个个人博客网页，总代码" [level=3] [ref=e195]
+                  - paragraph [ref=e196]: noName
+            - generic [ref=e197] [cursor=pointer]:
+              - generic [ref=e198]:
+                - generic [ref=e199]: 🤖
+                - button "查看对话" [ref=e203]
+              - generic [ref=e205]:
+                - generic [ref=e206]: "n"
+                - generic [ref=e209]:
+                  - heading "个人博客" [level=3] [ref=e210]
+                  - paragraph [ref=e211]: noName
+          - list [ref=e213]:
+            - listitem [ref=e214]: 共 6 个应用
+            - listitem "Previous Page" [ref=e215]:
+              - button [disabled] [ref=e216]:
+                - img "left" [ref=e217]
+            - listitem "1" [ref=e220] [cursor=pointer]
+            - listitem "Next Page" [ref=e222]:
+              - button [disabled] [ref=e223]:
+                - img "right" [ref=e224]
+        - generic [ref=e227]:
+          - heading "精选案例" [level=2] [ref=e228]
+          - list [ref=e230]:
+            - listitem [ref=e231]: 共 0 个案例
+            - listitem "Previous Page" [ref=e232]:
+              - button [disabled] [ref=e233]:
+                - img "left" [ref=e234]
+            - listitem "1" [ref=e237] [cursor=pointer]
+            - listitem "Next Page" [ref=e239]:
+              - button [disabled] [ref=e240]:
+                - img "right" [ref=e241]
+    - paragraph [ref=e60]:
+      - link "编程导航原创项目 by 程序员鱼皮" [ref=e61] [cursor=pointer]:
+        - /url: https://www.codefather.cn
+  - generic [ref=e62]:
+    - generic "Toggle devtools panel" [ref=e63] [cursor=pointer]
+    - generic "Toggle Component Inspector" [ref=e69] [cursor=pointer]
+  - generic [ref=e245]:
+    - img "check-circle" [ref=e246]
+    - text: 登录成功

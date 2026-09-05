@@ -1,0 +1,51 @@
+- generic [active] [ref=f1e1]:
+  - generic [ref=f1e3]:
+    - generic [ref=f1e5]:
+      - link [ref=f1e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f1e8]:
+          - img "Logo" [ref=f1e9]
+          - heading "鱼皮应用生成" [level=1] [ref=f1e10]
+      - menu [ref=f1e12]:
+        - menuitem "home 主页" [ref=f1e13] [cursor=pointer]:
+          - img "home" [ref=f1e14]
+          - generic [ref=f1e17]: 主页
+        - menuitem "用户管理" [ref=f1e18] [cursor=pointer]
+        - menuitem "应用管理" [ref=f1e20] [cursor=pointer]
+        - menuitem [ref=f1e22] [cursor=pointer]:
+          - link "编程导航" [ref=f1e24]:
+            - /url: https://www.codefather.cn
+      - generic [ref=f1e25]: noName
+    - main [ref=f1e32]:
+      - generic [ref=f1e33]:
+        - generic [ref=f1e34]:
+          - generic [ref=f1e35]:
+            - heading "个人博客" [level=1] [ref=f1e36]
+            - generic [ref=f1e37]: 原生多文件模式
+          - generic [ref=f1e38]:
+            - button "info-circle 应用详情" [ref=f1e39] [cursor=pointer]:
+              - img "info-circle" [ref=f1e40]
+              - generic [ref=f1e44]: 应用详情
+            - generic [ref=f1e45]:
+              - button "download 下载代码" [disabled]:
+                - img "download"
+                - generic: 下载代码
+            - button "cloud-upload 部署" [ref=f1e46] [cursor=pointer]:
+              - img "cloud-upload" [ref=f1e47]
+              - generic [ref=f1e51]: 部署
+        - generic [ref=f1e52]:
+          - generic [ref=f1e56]:
+            - textbox "请描述你想生成的网站，越详细效果越好哦" [ref=f1e57]
+            - button [ref=f1e59] [cursor=pointer]:
+              - img "send" [ref=f1e60]
+          - generic [ref=f1e63]:
+            - heading "生成后的网页展示" [level=3] [ref=f1e65]
+            - generic [ref=f1e67]:
+              - generic [ref=f1e68]: 🌐
+              - paragraph [ref=f1e69]: 网站文件生成完成后将在这里展示
+    - paragraph [ref=f1e72]:
+      - link "编程导航原创项目 by 程序员鱼皮" [ref=f1e73] [cursor=pointer]:
+        - /url: https://www.codefather.cn
+  - generic [ref=f1e74]:
+    - generic "Toggle devtools panel" [ref=f1e75] [cursor=pointer]
+    - generic "Toggle Component Inspector" [ref=f1e81] [cursor=pointer]

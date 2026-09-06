@@ -1,6 +1,7 @@
 package com.yizqq.yizcode.core;
 
 import com.yizqq.yizcode.ai.AiCodeGeneratorService;
+import com.yizqq.yizcode.ai.AiCodeGeneratorServiceFactory;
 import com.yizqq.yizcode.ai.model.HtmlCodeResult;
 import com.yizqq.yizcode.ai.model.MultiFileCodeResult;
 import com.yizqq.yizcode.core.parser.CodeParserExecutor;
@@ -19,8 +20,9 @@ import java.io.File;
 @Service
 public class AiCodeGeneratorFacade {
 
+
     @Resource
-    private AiCodeGeneratorService aiCodeGeneratorService;
+    private AiCodeGeneratorServiceFactory aiCodeGeneratorServiceFactory;
 
     /**
      * 统一入口：根据类型生成并保存代码
@@ -34,6 +36,8 @@ public class AiCodeGeneratorFacade {
         if (codeGenTypeEnum == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "生成类型不能为空");
         }
+        // 根据应用ID获取对应的AI代码生成服务
+        AiCodeGeneratorService aiCodeGeneratorService = aiCodeGeneratorServiceFactory.getAiCodeGeneratorService(appID);
         return switch (codeGenTypeEnum) {
             case HTML -> {
                 HtmlCodeResult htmlCodeResult = aiCodeGeneratorService.generateHTMLCode(userPrompt);
@@ -62,6 +66,8 @@ public class AiCodeGeneratorFacade {
         if (codeGenTypeEnum == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "生成类型不能为空");
         }
+        // 根据应用ID获取对应的AI代码生成服务
+        AiCodeGeneratorService aiCodeGeneratorService = aiCodeGeneratorServiceFactory.getAiCodeGeneratorService(appID);
         return switch (codeGenTypeEnum) {
             case HTML -> {
                 Flux<String> codeStream = aiCodeGeneratorService.generateHtmlCodeStream(userPrompt);

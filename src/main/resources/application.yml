@@ -7,8 +7,15 @@ spring:
     url: jdbc:mysql://localhost:3306/yiz_code
     username: root
     password: "0721"
+  # redis
   profiles:
     active: local
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password:
+      ttl: 3600
 server:
   port: 8080
   servlet:

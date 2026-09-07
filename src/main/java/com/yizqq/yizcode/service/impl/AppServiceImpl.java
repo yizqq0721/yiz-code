@@ -9,6 +9,7 @@ import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.spring.service.impl.ServiceImpl;
 import com.yizqq.yizcode.constant.AppConstant;
 import com.yizqq.yizcode.core.AiCodeGeneratorFacade;
+import com.yizqq.yizcode.core.handler.StreamHandlerExecutor;
 import com.yizqq.yizcode.exception.BusinessException;
 import com.yizqq.yizcode.exception.ErrorCode;
 import com.yizqq.yizcode.exception.ThrowUtils;
@@ -55,6 +56,9 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App> implements AppSe
 
     @Resource
     private ChatHistoryService chatHistoryService;
+
+    @Resource
+    private StreamHandlerExecutor streamHandlerExecutor;
 
     @Override
     public AppVO getAppVO(App app) {
@@ -147,17 +151,7 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App> implements AppSe
         // 6. 调用 AI 生成代码（流式）
         Flux<String> codeStream = aiCodeGeneratorFacade.generateAndSaveCodeStream(prompt, codeGenTypeEnum, appId);
         // 7.收集AI响应内容，并在完成后保留到对话历史
-        StringBuilder aiResponseContent = new StringBuilder();
-        return codeStream.map(chuck -> {
-            // 收集 AI 响应内容
-            aiResponseContent.append(chuck);
-            return chuck;
-        }).doOnComplete(() -> {
-            chatHistoryService.addChatMessage(appId, aiResponseContent.toString(), ChatHistoryMessageTypeEnum.AI.getValue(), loginUser.getId());
-        }).doOnError(error -> {
-            String errorMessage = "AI 响应错误：" +  error.getMessage();
-            chatHistoryService.addChatMessage(appId,errorMessage , ChatHistoryMessageTypeEnum.AI.getValue(), loginUser.getId());
-        });
+        return streamHandlerExecutor.doExecute(codeStream, chatHistoryService, appId, loginUser, codeGenTypeEnum);
     }
 
     @Override

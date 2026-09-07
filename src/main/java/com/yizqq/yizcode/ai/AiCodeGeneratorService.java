@@ -54,7 +54,7 @@ public interface AiCodeGeneratorService {
      *
      * @param userPrompt 用户提示词
      * @return AI 的输出结果
-     *//*
+     */
     @SystemMessage(fromResource = "prompt/codegen-vue-project-system-prompt.txt")
-    TokenStream generateVueProjectCodeStream(@MemoryId long appId, @UserMessage String userPrompt);*/
+    TokenStream generateVueProjectCodeStream(@MemoryId long appId, @UserMessage String userPrompt);
 }

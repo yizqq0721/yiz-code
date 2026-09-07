@@ -119,8 +119,8 @@ public class AppController {
         BeanUtil.copyProperties(appAddRequest, app);
         app.setUserId(loginUser.getId());
         app.setAppName(initPrompt.substring(0, Math.min(initPrompt.length(), 12)));
-        //暂时设置为多文件
-        app.setCodeGenType(CodeGenTypeEnum.MULTI_FILE.getValue());
+        //暂时设置为vue
+        app.setCodeGenType(CodeGenTypeEnum.VUE_PROJECT.getValue());
         app.setPriority(AppConstant.DEFAULT_APP_PRIORITY);
         return ResultUtils.success(appService.addApp(app));
     }

@@ -2,6 +2,9 @@
 spring:
   application:
     name: yiz-code-backend
+  session:
+    store-type: redis
+    timeout: 2592000
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/yiz_code
@@ -20,6 +23,9 @@ server:
   port: 8080
   servlet:
     context-path: /api
+    session:
+      cookie:
+        max-age: 2592000
 # springdoc-openapi项目配置
 springdoc:
   group-configs:

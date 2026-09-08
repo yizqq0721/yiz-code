@@ -112,8 +112,7 @@ public class JsonMessageStreamHandler {
                 String relativeFilePath = jsonObject.getStr("relativeFilePath");
                 String suffix = FileUtil.getSuffix(relativeFilePath);
                 String content = jsonObject.getStr("content");
-                String result = String.format(
-                    """
+                String result = String.format("""
                     [工具调用] 写入文件 %s
                     ```%s
                     %s

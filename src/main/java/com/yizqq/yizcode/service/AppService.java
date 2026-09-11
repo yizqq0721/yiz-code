@@ -2,6 +2,7 @@ package com.yizqq.yizcode.service;
 
 import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.core.service.IService;
+import com.yizqq.yizcode.model.dto.app.AppAddRequest;
 import com.yizqq.yizcode.model.dto.app.AppQueryRequest;
 import com.yizqq.yizcode.model.entity.App;
 import com.yizqq.yizcode.model.entity.User;
@@ -25,6 +26,16 @@ public interface AppService extends IService<App> {
      * @return 新建应用 id
      */
     long addApp(App app);
+
+
+    /**
+     * 创建应用
+     *
+     * @param appAddRequest
+     * @param loginUser
+     * @return
+     */
+    Long createApp(AppAddRequest appAddRequest, User loginUser);
 
     /**
      * 获取应用封装类

@@ -33,7 +33,7 @@ public class ReasoningStreamingChatModelConfig {
     @Bean
     public StreamingChatModel reasoningStreamingChatModelPrototype() {
 
-        final String modelName = "deepseek-v4-flash";
+        final String modelName = "deepseek-flash";
 
         return OpenAiStreamingChatModel.builder()
                 .apiKey(apiKey)

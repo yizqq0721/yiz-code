@@ -3,6 +3,7 @@ package com.yizqq.yizcode.ai;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.yizqq.yizcode.ai.tools.FileWriteTool;
+import com.yizqq.yizcode.ai.tools.ToolManager;
 import com.yizqq.yizcode.exception.BusinessException;
 import com.yizqq.yizcode.exception.ErrorCode;
 import com.yizqq.yizcode.model.enums.CodeGenTypeEnum;
@@ -44,6 +45,9 @@ public class AiCodeGeneratorServiceFactory {
 
     @Resource
     private ChatHistoryService chatHistoryService;
+
+    @Resource
+    private ToolManager toolManager;
 
     /**
      * AI 服务实例缓存
@@ -107,7 +111,9 @@ public class AiCodeGeneratorServiceFactory {
                         .chatModel(chatModel)
                         .streamingChatModel(reasoningStreamingChatModelPrototype)
                         .chatMemoryProvider(memoryId -> chatMemory)
-                        .tools(new FileWriteTool())
+                        .tools(
+                                toolManager.getAllTools()
+                        )
                         // 处理工具调用幻觉问题
                         .hallucinatedToolNameStrategy(toolExecutionRequest ->
                                 ToolExecutionResultMessage.from(toolExecutionRequest,

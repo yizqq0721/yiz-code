@@ -6,6 +6,8 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.yizqq.yizcode.ai.model.message.*;
+import com.yizqq.yizcode.ai.tools.BaseTool;
+import com.yizqq.yizcode.ai.tools.ToolManager;
 import com.yizqq.yizcode.constant.AppConstant;
 import com.yizqq.yizcode.core.builder.VueProjectBuilder;
 import com.yizqq.yizcode.model.entity.User;
@@ -32,6 +34,9 @@ public class JsonMessageStreamHandler {
 
     @Resource
     private VueProjectBuilder vueProjectBuilder;
+
+    @Resource
+    private ToolManager toolManager;
 
     /**
      * 处理 TokenStream（VUE_PROJECT）
@@ -94,18 +99,17 @@ public class JsonMessageStreamHandler {
                 if (toolId != null && !seenToolIds.contains(toolId)) {
                     // 第一次调用这个工具，记录 ID 并完整返回工具信息
                     seenToolIds.add(toolId);
-/*                    // 根据工具名称获取工具实例
+                    // 根据工具名称获取工具实例
                     BaseTool tool = toolManager.getTool(toolName);
                     // 返回格式化的工具调用信息
-                    return tool.generateToolRequestResponse();*/
-                    return "\n\n[选择工具] 写入文件 \n\n";
+                    return tool.generateToolRequestResponse();
                 } else {
                     // 不是第一次调用这个工具，直接返回空
                     return "";
                 }
             }
 
-            case TOOL_EXECUTED -> {
+      /*      case TOOL_EXECUTED -> {
                 ToolExecutedMessage toolExecutedMessage = JSONUtil.toBean(chunk, ToolExecutedMessage.class);
 
                 JSONObject jsonObject = JSONUtil.parseObj(toolExecutedMessage.getArguments());
@@ -127,10 +131,9 @@ public class JsonMessageStreamHandler {
             default -> {
                 log.error("不支持的消息类型: {}", typeEnum);
                 return "";
-            }
+            }*/
 
 
-           /*
             case TOOL_EXECUTED -> {
                 ToolExecutedMessage toolExecutedMessage = JSONUtil.toBean(chunk, ToolExecutedMessage.class);
                 JSONObject jsonObject = JSONUtil.parseObj(toolExecutedMessage.getArguments());
@@ -146,7 +149,7 @@ public class JsonMessageStreamHandler {
             default -> {
                 log.error("不支持的消息类型: {}", typeEnum);
                 return "";
-            }*/
+            }
         }
     }
 }

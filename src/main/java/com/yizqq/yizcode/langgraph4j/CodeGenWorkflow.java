@@ -41,7 +41,7 @@ public class CodeGenWorkflow {
                     .addNode("prompt_enhancer", PromptEnhancerNode.create())
                     .addNode("router", RouterNode.create())
                     .addNode("code_generator", CodeGeneratorNode.create())
-                    //.addNode("code_quality_check", CodeQualityCheckNode.create())
+                    .addNode("code_quality_check", CodeQualityCheckNode.create())
                     .addNode("project_builder", ProjectBuilderNode.create())
 
                     // 添加边
@@ -49,9 +49,7 @@ public class CodeGenWorkflow {
                     .addEdge("image_collector", "prompt_enhancer")
                     .addEdge("prompt_enhancer", "router")
                     .addEdge("router", "code_generator")
-                    // 临时边：跳过代码质量检查
-                    .addEdge("code_generator", "project_builder")
-                    /*.addEdge("code_generator", "code_quality_check")
+                    .addEdge("code_generator", "code_quality_check")
                     // 新增质检条件边：根据质检结果决定下一步
                     .addConditionalEdges("code_quality_check",
                             edge_async(this::routeAfterQualityCheck),
@@ -59,7 +57,7 @@ public class CodeGenWorkflow {
                                     "build", "project_builder",   // 质检通过且需要构建
                                     "skip_build", END,            // 质检通过但跳过构建
                                     "fail", "code_generator"      // 质检失败，重新生成
-                            ))*/
+                            ))
                     .addEdge("project_builder", END)
 
                     // 编译工作流
@@ -231,8 +229,8 @@ public class CodeGenWorkflow {
     /**
      * 根据质检结果决定下一步
      *
-     * @param state
-     * @return
+     * @param state 当前状态
+     * @return "fail" 表示需要重新生成代码，其他值表示继续后续流程
      */
     private String routeAfterQualityCheck(MessagesState<String> state) {
         WorkflowContext context = WorkflowContext.getContext(state);
@@ -250,8 +248,8 @@ public class CodeGenWorkflow {
     /**
      * 根据代码生成类型决定是否需要构建
      *
-     * @param state
-     * @return
+     * @param state 当前状态
+     * @return "build" 表示需要构建，"skip_build" 表示不需要构建
      */
     private String routeBuildOrSkip(MessagesState<String> state) {
         WorkflowContext context = WorkflowContext.getContext(state);

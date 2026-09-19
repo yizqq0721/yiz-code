@@ -5,7 +5,6 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.mybatisflex.core.paginate.Page;
 import com.mybatisflex.core.query.QueryWrapper;
-import com.yizqq.yizcode.ai.AiCodeGenTypeRoutingService;
 import com.yizqq.yizcode.annotation.AuthCheck;
 import com.yizqq.yizcode.common.BaseResponse;
 import com.yizqq.yizcode.common.DeleteRequest;
@@ -18,7 +17,6 @@ import com.yizqq.yizcode.exception.ThrowUtils;
 import com.yizqq.yizcode.model.dto.app.*;
 import com.yizqq.yizcode.model.entity.App;
 import com.yizqq.yizcode.model.entity.User;
-import com.yizqq.yizcode.model.enums.CodeGenTypeEnum;
 import com.yizqq.yizcode.model.vo.AppVO;
 import com.yizqq.yizcode.service.AppService;
 import com.yizqq.yizcode.service.ProjectDownloadService;
@@ -26,6 +24,7 @@ import com.yizqq.yizcode.service.UserService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.MediaType;
 import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.web.bind.annotation.*;
@@ -228,11 +227,11 @@ public class AppController {
      * @return 精选应用列表
      */
     @PostMapping("/good/list/page/vo")
- /*   @Cacheable(
+    @Cacheable(
             value = "good_app_page",
             key = "T(com.yizqq.yizcode.utils.CacheKeyUtils).generateKey(#appQueryRequest)",
             condition = "#appQueryRequest.pageNum <= 10"
-    )*/
+    )
     public BaseResponse<Page<AppVO>> listGoodAppVOByPage(@RequestBody AppQueryRequest appQueryRequest) {
         ThrowUtils.throwIf(appQueryRequest == null, ErrorCode.PARAMS_ERROR);
         // 限制每页最多 20 个

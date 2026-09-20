@@ -1,15 +1,11 @@
 package com.yizqq.yizcode.core.handler;
 
-
-import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.yizqq.yizcode.ai.model.message.*;
 import com.yizqq.yizcode.ai.tools.BaseTool;
 import com.yizqq.yizcode.ai.tools.ToolManager;
-import com.yizqq.yizcode.constant.AppConstant;
-import com.yizqq.yizcode.core.builder.VueProjectBuilder;
 import com.yizqq.yizcode.model.entity.User;
 import com.yizqq.yizcode.model.enums.ChatHistoryMessageTypeEnum;
 import com.yizqq.yizcode.service.ChatHistoryService;
@@ -28,12 +24,6 @@ import java.util.Set;
 @Slf4j
 @Component
 public class JsonMessageStreamHandler {
-
-/*    @Resource
-    private ToolManager toolManager;*/
-
-    @Resource
-    private VueProjectBuilder vueProjectBuilder;
 
     @Resource
     private ToolManager toolManager;
@@ -65,9 +55,6 @@ public class JsonMessageStreamHandler {
                     // 流式响应完成后，添加 AI 消息到对话历史
                     String aiResponse = chatHistoryStringBuilder.toString();
                     chatHistoryService.addChatMessage(appId, aiResponse, ChatHistoryMessageTypeEnum.AI.getValue(), loginUser.getId());
-                    // 临时异步生成项目
-                    String projectPath = AppConstant.CODE_OUTPUT_ROOT_DIR + "/vue_project_" +appId;
-                    vueProjectBuilder.buildProjectAsync(projectPath);
                 })
                 .doOnError(error -> {
                     // 如果AI回复失败，也要记录错误消息
@@ -108,31 +95,6 @@ public class JsonMessageStreamHandler {
                     return "";
                 }
             }
-
-      /*      case TOOL_EXECUTED -> {
-                ToolExecutedMessage toolExecutedMessage = JSONUtil.toBean(chunk, ToolExecutedMessage.class);
-
-                JSONObject jsonObject = JSONUtil.parseObj(toolExecutedMessage.getArguments());
-                String relativeFilePath = jsonObject.getStr("relativeFilePath");
-                String suffix = FileUtil.getSuffix(relativeFilePath);
-                String content = jsonObject.getStr("content");
-                String result = String.format("""
-                    [工具调用] 写入文件 %s
-                    ```%s
-                    %s
-                    ```
-                    """, relativeFilePath, suffix, content);
-
-                // 输出前端和要持久化的内容
-                String output = String.format("\n\n%s\n\n", result);
-                chatHistoryStringBuilder.append(output);
-                return output;
-            }
-            default -> {
-                log.error("不支持的消息类型: {}", typeEnum);
-                return "";
-            }*/
-
 
             case TOOL_EXECUTED -> {
                 ToolExecutedMessage toolExecutedMessage = JSONUtil.toBean(chunk, ToolExecutedMessage.class);

@@ -18,6 +18,8 @@ import com.yizqq.yizcode.model.dto.app.*;
 import com.yizqq.yizcode.model.entity.App;
 import com.yizqq.yizcode.model.entity.User;
 import com.yizqq.yizcode.model.vo.AppVO;
+import com.yizqq.yizcode.ratelimter.annotation.RateLimit;
+import com.yizqq.yizcode.ratelimter.enums.RateLimitType;
 import com.yizqq.yizcode.service.AppService;
 import com.yizqq.yizcode.service.ProjectDownloadService;
 import com.yizqq.yizcode.service.UserService;
@@ -55,6 +57,7 @@ public class AppController {
     private ProjectDownloadService projectDownloadService;
 
     @GetMapping(value = "/chat/gen/code", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @RateLimit(limitType = RateLimitType.USER, rate = 5, rateInterval = 60)
     public Flux<ServerSentEvent<String>> chatToGenCode(@RequestParam Long appId,
                                        @RequestParam String prompt,
                                        HttpServletRequest request) {

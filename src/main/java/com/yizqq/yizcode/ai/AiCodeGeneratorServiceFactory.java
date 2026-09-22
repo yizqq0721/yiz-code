@@ -2,7 +2,7 @@ package com.yizqq.yizcode.ai;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
-import com.yizqq.yizcode.ai.tools.FileWriteTool;
+import com.yizqq.yizcode.ai.guardrail.PromptSafetyInputGuardrail;
 import com.yizqq.yizcode.ai.tools.ToolManager;
 import com.yizqq.yizcode.exception.BusinessException;
 import com.yizqq.yizcode.exception.ErrorCode;
@@ -115,7 +115,7 @@ public class AiCodeGeneratorServiceFactory {
                                     "Error: there is no tool called " + toolExecutionRequest.name())
                     )
                     .maxSequentialToolsInvocations(20)  // 最多连续调用 20 次工具
-                    /*                    .inputGuardrails(new PromptSafetyInputGuardrail()) // 添加输入护轨
+                    .inputGuardrails(new PromptSafetyInputGuardrail()) // 添加输入护轨
                     //                        .outputGuardrails(new RetryOutputGuardrail()) // 添加输出护轨，为了流式输出，这里不使用*/
                     .build();
         }
@@ -128,7 +128,7 @@ public class AiCodeGeneratorServiceFactory {
                     .chatModel(chatModel)
                     .streamingChatModel(openAiStreamingChatModel)
                     .chatMemory(chatMemory)
-                    /*                    .inputGuardrails(new PromptSafetyInputGuardrail()) // 添加输入护轨
+                    .inputGuardrails(new PromptSafetyInputGuardrail()) // 添加输入护轨
                     //                        .outputGuardrails(new RetryOutputGuardrail()) // 添加输出护轨，为了流式输出，这里不使用*/
                     .build();
         }
